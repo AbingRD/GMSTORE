@@ -1,0 +1,54 @@
+[
+  {
+    "id": 1,
+    "name": "RED HORSE 500 ML",
+    "retail_price": 70,
+    "wholesale_price": 680
+  },
+  {
+    "id": 2,
+    "name": "RED HORSE JUMBO 1L",
+    "retail_price": 140,
+    "wholesale_price": 660
+  },
+  {
+    "id": 3,
+    "name": "PALE PILSEN / GRANDE",
+    "retail_price": 130,
+    "wholesale_price": 640
+  },
+  {
+    "id": 4,
+    "name": "MAGIC SARAP ",
+    "retail_price": 6,
+    "wholesale_price": 75
+  },
+  {
+    "id": 5,
+    "name": "VITSEN",
+    "retail_price": 5,
+    "wholesale_price": 61
+  },
+  {
+    "id": 6,
+    "name": "GINISA",
+    "retail_price": 5,
+    "wholesale_price": 52
+  }
+  ,
+  {
+    "id": 7,
+    "name": "JUICY LEMON SMALL",
+    "retail_price": 12,
+    "wholesale_price": 175
+  }
+  ,
+  {
+    "id": 8,
+    "name": "COKE 8 OZ + 1 FUZETEE",
+    "retail_price": 13,
+    "wholesale_price": 200
+  }
+  
+
+]
