@@ -19,7 +19,7 @@ import ReactNativePosPrinter from 'react-native-thermal-pos-printer';
 import { TransactionContext } from './TransactionContext';
 
 const printerMac = '10:22:33:3B:93:A5'; // replace with your printer MAC
-
+//WORK FOR UI ON THIS
 export default function PreviewScreen({ route, navigation }) {
   const { items, total } = route.params;
   const insets = useSafeAreaInsets();

@@ -4,7 +4,7 @@ import { TransactionContext } from './TransactionContext';
 
 export default function Transactions() {
   const { transactions } = useContext(TransactionContext);
-
+//UI FOR THIS ALSO
   const renderItem = ({ item }) => (
     <View style={styles.row}>
       <Text style={styles.txnId}>Txn #{String(item.id).padStart(5, '0')}</Text>
