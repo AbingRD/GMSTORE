@@ -1,51 +1,51 @@
 [
   {
     "id": 1,
-    "name": "REDHORSE 5",
+    "name": "Redhorse 5",
     "retail_price": 70,
     "wholesale_price": 680
   },
   {
     "id": 2,
-    "name": "REDHORSE JUMBO",
+    "name": "Redhorse Jumbo",
     "retail_price": 140,
     "wholesale_price": 660
   },
   {
     "id": 3,
-    "name": "GRANDE",
+    "name": "Grande",
     "retail_price": 130,
     "wholesale_price": 640
   },
   {
     "id": 4,
-    "name": "MAGIC SARAP",
+    "name": "Magic Sarap",
     "retail_price": 6,
     "wholesale_price": 75
   },
   {
     "id": 5,
-    "name": "VITSEN",
+    "name": "Vitsen",
     "retail_price": 5,
     "wholesale_price": 61
   },
   {
     "id": 6,
-    "name": "GINISA",
+    "name": "Ginisa",
     "retail_price": 5,
     "wholesale_price": 52
   }
   ,
   {
     "id": 7,
-    "name": "JUICYLEMON SMALL",
+    "name": "JuicyLemon Small",
     "retail_price": 12,
     "wholesale_price": 175
   }
   ,
   {
     "id": 8,
-    "name": "COKE 8OZ",
+    "name": "Coke 8pz",
     "retail_price": 13,
     "wholesale_price": 200
   }
@@ -70,90 +70,70 @@
   },
   {
     "id": 12,
-    "name": "Oyster 1/2 Doz",
-    "retail_price": 8,
-    "wholesale_price": 38
+    "name": "Winston",
+    "retail_price": 9,
+    "wholesale_price": 163
   },
   {
     "id": 13,
-    "name": "Oyster 1DOZ",
+    "name": "Mighty White",
     "retail_price": 8,
-    "wholesale_price": 76
+    "wholesale_price": 145
   },
   {
     "id": 14,
-    "name": "Oyster 1/2 Doz",
+    "name": "Mighty Red",
     "retail_price": 8,
-    "wholesale_price": 38
+    "wholesale_price": 145
   },
   {
     "id": 15,
-    "name": "Oyster 1/2 Doz",
-    "retail_price": 8,
-    "wholesale_price": 38
+    "name": "Marlboro Red",
+    "retail_price": 9,
+    "wholesale_price": 155
   },
   {
     "id": 16,
-    "name": "Oyster 1/2 Doz",
-    "retail_price": 8,
-    "wholesale_price": 38
+    "name": "Marlboro Iceblast",
+    "retail_price": 9,
+    "wholesale_price": 155
   },
   {
     "id": 17,
-    "name": "Oyster 1/2 Doz",
+    "name": "Hope",
     "retail_price": 8,
-    "wholesale_price": 38
+    "wholesale_price": 147
   },
   {
     "id": 18,
-    "name": "Oyster 1/2 Doz",
-    "retail_price": 8,
-    "wholesale_price": 38
+    "name": "Chesterfield RedXl",
+    "retail_price": 7,
+    "wholesale_price": 128
   },
   {
     "id": 19,
-    "name": "Oyster 1/2 Doz",
-    "retail_price": 8,
-    "wholesale_price": 38
+    "name": "Chesterfield White",
+    "retail_price": 7,
+    "wholesale_price": 128
   },
   {
     "id": 20,
-    "name": "Oyster 1/2 Doz",
-    "retail_price": 8,
-    "wholesale_price": 38
+    "name": "Chesterfield RedOrig",
+    "retail_price": 7,
+    "wholesale_price": 128
   },
   {
     "id": 21,
-    "name": "Oyster 1/2 Doz",
+    "name": "Mighty Blast",
     "retail_price": 8,
-    "wholesale_price": 38
-  },{
-    "id": 22,
-    "name": "Oyster 1/2 Doz",
-    "retail_price": 8,
-    "wholesale_price": 38
-  },{
-    "id": 23,
-    "name": "Oyster 1/2 Doz",
-    "retail_price": 8,
-    "wholesale_price": 38
-  },{
-    "id": 24,
-    "name": "Oyster 1/2 Doz",
-    "retail_price": 8,
-    "wholesale_price": 38
-  },{
-    "id": 25,
-    "name": "Oyster 1/2 Doz",
-    "retail_price": 8,
-    "wholesale_price": 38
+    "wholesale_price": 145
   },
   {
-    "id": 26,
-    "name": "Oyster 1/2 Doz",
-    "retail_price": 8,
-    "wholesale_price": 38
+    "id": 22,
+    "name": "Camel Cigar",
+    "retail_price": 7,
+    "wholesale_price": 135
   }
-
-
+  
+  
 ]

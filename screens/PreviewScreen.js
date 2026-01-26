@@ -65,37 +65,58 @@ const printReceipt = async () => {
     const change = cashAmount - total;
 
     // --- HEADER ---
-    await ReactNativePosPrinter.printText(`ABING STORE\n`, { align: 'CENTER', size: 12, bold: true });
-    await ReactNativePosPrinter.printText(`09167640132\n`, { align: 'CENTER', size: 10 });
-    await ReactNativePosPrinter.printText(`TNo:${txnNumber}      ${dateStr}      ${timeStr}\n`, { align: 'LEFT', size: 9 });
-    await ReactNativePosPrinter.printText(`Customer: ${customerName}\n`, { align: 'LEFT', size: 10 });
-    await ReactNativePosPrinter.printText(`--------------------------------\n`);
+    await ReactNativePosPrinter.printText(`ABING STORE\n`, { align: 'CENTER', size: 14, bold: true });
+    await ReactNativePosPrinter.printText(`09167640132\n`, { align: 'CENTER', size: 12 });
+     await ReactNativePosPrinter.printText(`TNo:${txnNumber}      ${dateStr}      ${timeStr}\n`, { align: 'LEFT', size: 9 });
+    await ReactNativePosPrinter.printText(`Customer: ${customerName}\n`, { align: 'LEFT', size: 9 });
+    await ReactNativePosPrinter.printText(`--------------------------------`);
 
     // --- ITEMS ---
-    for (const item of items) {
-      const lineTotal = item.wholesale_price * item.quantity;
-      await ReactNativePosPrinter.printText(`${item.name.substring(0, 20).padEnd(25)}P${lineTotal}\n`);
-      await ReactNativePosPrinter.printText(`P${item.wholesale_price} x ${item.quantity}\n`);
-    }
+   
+   // --- ITEMS ---
+for (const item of items) {
+  const lineTotal = item.wholesale_price * item.quantity;
+    // const LEFT_MARGIN = '  '; // 2 spaces
+  // Smaller text (size 8)
+  await ReactNativePosPrinter.printText(
+  `${item.name.substring(0, 23).padEnd(23)} ₱${lineTotal}\n\n`,
+  {  size: 9, bold: false }
+);
+  await ReactNativePosPrinter.printText(
+   
+    ` ₱${item.wholesale_price} x ${item.quantity}\n\n\n`,
+    { align: 'LEFT', size: 9, bold: false }
+  );
+   ReactNativePosPrinter.newLine();
+}
+
 
     await ReactNativePosPrinter.printText(`--------------------------------\n`);
     await ReactNativePosPrinter.printText(`Grand Total: ₱${total.toFixed(2)}\n`, { align: 'RIGHT', size: 10 });
-    await ReactNativePosPrinter.printText(`Cash: P${cashAmount.toFixed(2)}\n`, { align: 'RIGHT', size: 10 });
+    await ReactNativePosPrinter.printText(`Cash: ₱${cashAmount.toFixed(2)}\n`, { align: 'RIGHT', size: 10 });
     if (change > 0) {
-      await ReactNativePosPrinter.printText(`Change: P${change.toFixed(2)}\n`, { align: 'RIGHT', size: 10 });
+      await ReactNativePosPrinter.printText(`Change: ₱${change.toFixed(2)}\n`, { align: 'RIGHT', size: 10 });
       await ReactNativePosPrinter.newLine(2);
     }
 
     await ReactNativePosPrinter.newLine(2);
 
     // 🔹 Dynamic sleep based on number of items
-    let delay = 1000; // default 1 second
-    if (items.length < 10) delay = 8000;
-    else if (items.length > 25) delay = 15000;
-    else if (items.length > 30) delay = 20000;
-    else if (items.length >= 10) delay = 12000; // optional for medium batch
+    // 🔹 Dynamic sleep based on number of items
+let delay = 0;
 
+    if (items.length < 10) {
+    delay = 1800; 
+    } else if (items.length < 15 || items.lenght > 15) {
+  delay = 3500; 
+    } else if(items.length < 25 || items.length > 25) {
+  delay = 5600; // 15 seconds for large batch
+    }
+    else if(items.length > 35){
+     delay = 7700; 
+    }
     await sleep(delay);
+
 
     await ReactNativePosPrinter.disconnectPrinter();
 

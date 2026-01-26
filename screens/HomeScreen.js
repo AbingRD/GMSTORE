@@ -46,7 +46,7 @@ export default function HomeScreen({ navigation }) {
 
       {/* Header */}
       <View style={styles.headerRow}>
-        <Text style={styles.headerText}>Product</Text>
+        <Text style={styles.headerText}>Products</Text>
         <Text style={styles.headerRetail}>Retail</Text>
         <Text style={styles.headerText}>Wholesale</Text>
       </View>
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
 
    },
   cartIcon: { 
-    width: 40, height: 35, marginLeft: 10 ,tintColor: '#907e7e',
+    width: 40, height: 35, marginLeft: 10 ,tintColor: '#989292',
 },
   headerRow: {
      flexDirection: 'row', paddingVertical: 10, borderBottomWidth: 2, borderColor: '#9f8f8f'
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
      flex: 1, textAlign: 'center', fontSize: 15 
     },
     listStyle:{
-        fontSize: 40,
+        
 
     },
 });

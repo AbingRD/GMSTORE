@@ -35,7 +35,7 @@ export default function Transactions() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 15 },
+  container: { flex: 1, paddingTop: 60, },
   row: { marginBottom: 20, borderBottomWidth: 1, borderColor: '#ccc', paddingBottom: 10 },
   txnId: { fontWeight: 'bold', marginBottom: 5 },
 });
