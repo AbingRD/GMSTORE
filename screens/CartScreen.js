@@ -6,7 +6,7 @@ import {
   StyleSheet,
   Pressable,
 } from 'react-native';
-import { SearchBar } from 'react-native-elements';
+import { Image, SearchBar } from 'react-native-elements';
 import products from '../data.json';
 
 /* ---------- Cart Row ---------- */
@@ -41,6 +41,7 @@ export default function CartScreen({ navigation }) {
     products.map(p => ({ ...p, quantity: 0 }))
   );
 
+  /* Update quantity */
   const updateQty = useCallback((id, delta) => {
     setItems(prev =>
       prev.map(item =>
@@ -51,17 +52,24 @@ export default function CartScreen({ navigation }) {
     );
   }, []);
 
+  /* Filter + SORT A–Z */
   const filteredItems = useMemo(() => {
-    return items.filter(item =>
-      item.name.toLowerCase().includes(search.toLowerCase())
-    );
+    return items
+      .filter(item =>
+        item.name.toLowerCase().includes(search.toLowerCase())
+      )
+      .sort((a, b) =>
+        a.name.localeCompare(b.name, undefined, { sensitivity: 'base' })
+      );
   }, [items, search]);
 
+  /* Selected items */
   const selectedItems = useMemo(
     () => items.filter(i => i.quantity > 0),
     [items]
   );
 
+  /* Total */
   const total = useMemo(
     () =>
       selectedItems.reduce(
@@ -78,8 +86,6 @@ export default function CartScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Create Transaction</Text>
-
       {/* Search */}
       <SearchBar
         placeholder="Search product..."
@@ -89,6 +95,12 @@ export default function CartScreen({ navigation }) {
         round
         containerStyle={styles.searchContainer}
         inputContainerStyle={styles.inputContainer}
+        searchIcon={
+          <Image
+            source={require('../assets/searchglass.png')}
+            style={{ width: 25, height: 25 }}
+          />
+        }
       />
 
       {/* Header */}
@@ -102,8 +114,7 @@ export default function CartScreen({ navigation }) {
         data={filteredItems}
         keyExtractor={item => item.id.toString()}
         renderItem={renderItem}
-        extraData={items}
-        contentContainerStyle={{ paddingBottom: 120 }}
+        contentContainerStyle={{ paddingBottom: 140 }}
       />
 
       {/* Preview */}
@@ -130,9 +141,10 @@ export default function CartScreen({ navigation }) {
     </View>
   );
 }
+
+/* ---------- Styles ---------- */
 const styles = StyleSheet.create({
   container: { flex: 1, paddingTop: 45, paddingHorizontal: 15 },
-  title: { fontSize: 20, fontWeight: 'bold', marginBottom: 10 },
 
   searchContainer: {
     backgroundColor: 'transparent',
@@ -166,7 +178,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   qtyBtn: {
-    fontSize: 22,
+    fontSize: 35,
     paddingHorizontal: 12,
     fontWeight: 'bold',
   },

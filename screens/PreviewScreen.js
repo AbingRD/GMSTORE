@@ -13,6 +13,7 @@ import {
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
   Keyboard,
+  ActivityIndicator
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import ReactNativePosPrinter from 'react-native-thermal-pos-printer';
@@ -28,6 +29,8 @@ export default function PreviewScreen({ route, navigation }) {
   const [customerName, setCustomerName] = useState('Customer');
   const [modalVisible, setModalVisible] = useState(false);
   const [cash, setCash] = useState(''); // for input
+    const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms)); //added for printing issue is It cannot print if items more than 30
+  const [printing, setPrinting] = useState(false);
 
   const requestPermissions = async () => {
     if (Platform.OS === 'android' && Platform.Version >= 31) {
@@ -45,69 +48,78 @@ export default function PreviewScreen({ route, navigation }) {
     }
   };
 
-  const printReceipt = async () => {
-    try {
-      await requestPermissions();
-      await ReactNativePosPrinter.init();
-      await ReactNativePosPrinter.connectPrinter(printerMac, { type: 'BLUETOOTH' });
+const printReceipt = async () => {
+  try {
+    setPrinting(true);
 
-      const txnNumber = String(transactionNumber).padStart(5, '0');
-      const now = new Date();
-      const dateStr = now.toLocaleDateString();
-      const timeStr = now.toLocaleTimeString();
+    await requestPermissions();
+    await ReactNativePosPrinter.init();
+    await ReactNativePosPrinter.connectPrinter(printerMac, { type: 'BLUETOOTH' });
 
-      const cashAmount = parseFloat(cash) || total; // if cash not input, use total
-      const change = cashAmount - total;
-        
-      // --- HEADER ---
-      await ReactNativePosPrinter.newLine(1);
-      await ReactNativePosPrinter.printText(`ABING STORE\n`, { align: 'CENTER', size: 14, bold: true });
-      await ReactNativePosPrinter.printText(`09167640132\n`, { align: 'CENTER', size: 12 });
-      await ReactNativePosPrinter.printText(`TNo:${txnNumber}      ${dateStr}      ${timeStr}\n`, { align: 'LEFT', size: 8 });
-      await ReactNativePosPrinter.printText(`Customer: ${customerName}\n`, { align: 'LEFT', size: 10 });
-      await ReactNativePosPrinter.printText(`--------------------------------\n`);
+    const txnNumber = String(transactionNumber).padStart(5, '0');
+    const now = new Date();
+    const dateStr = now.toLocaleDateString();
+    const timeStr = now.toLocaleTimeString();
 
-      // --- ITEMS ---
-      for (const item of items) {
-        const lineTotal = item.wholesale_price * item.quantity;
-        await ReactNativePosPrinter.printText(
-          `${item.name.substring(0, 20).padEnd(25)}P${lineTotal}\n`,
-              
-        );
-        await ReactNativePosPrinter.printText(`P${item.wholesale_price} x ${item.quantity}\n`);
-      }
+    const cashAmount = parseFloat(cash) || total;
+    const change = cashAmount - total;
 
-      await ReactNativePosPrinter.printText(`--------------------------------\n`);
+    // --- HEADER ---
+    await ReactNativePosPrinter.printText(`ABING STORE\n`, { align: 'CENTER', size: 12, bold: true });
+    await ReactNativePosPrinter.printText(`09167640132\n`, { align: 'CENTER', size: 10 });
+    await ReactNativePosPrinter.printText(`TNo:${txnNumber}      ${dateStr}      ${timeStr}\n`, { align: 'LEFT', size: 9 });
+    await ReactNativePosPrinter.printText(`Customer: ${customerName}\n`, { align: 'LEFT', size: 10 });
+    await ReactNativePosPrinter.printText(`--------------------------------\n`);
 
-      // --- GRAND TOTAL & CASH ---
-      await ReactNativePosPrinter.printText(`Grand Total: ₱${total.toFixed(2)}\n`, { align: 'RIGHT', bold: false, size: 12 });
-      await ReactNativePosPrinter.printText(`Cash: P${cashAmount.toFixed(2)}\n`, { align: 'RIGHT', bold: false, size: 10 });
-      if (change > 0) {
-        await ReactNativePosPrinter.printText(`Change: P${change.toFixed(2)}\n`, { align: 'RIGHT', bold: false, size: 10 });
-      }
-      await ReactNativePosPrinter.printText(`Thank you!\n\n`, { align: 'CENTER',size: 10 });
-      await ReactNativePosPrinter.newLine(2);
-      
-      await ReactNativePosPrinter.disconnectPrinter();
-
-      // Save transaction
-      addTransaction({
-        customerName,
-        date: now,
-        items,
-        total,
-        cash: cashAmount,
-        change: change > 0 ? change : 0,
-      });
-
-      Alert.alert('Success', 'Receipt printed successfully!', [
-        { text: 'OK', onPress: () => navigation.popToTop() },
-      ]);
-    } catch (error) {
-      console.error(error);
-      Alert.alert('Print Error', error.message);
+    // --- ITEMS ---
+    for (const item of items) {
+      const lineTotal = item.wholesale_price * item.quantity;
+      await ReactNativePosPrinter.printText(`${item.name.substring(0, 20).padEnd(25)}P${lineTotal}\n`);
+      await ReactNativePosPrinter.printText(`P${item.wholesale_price} x ${item.quantity}\n`);
     }
-  };
+
+    await ReactNativePosPrinter.printText(`--------------------------------\n`);
+    await ReactNativePosPrinter.printText(`Grand Total: ₱${total.toFixed(2)}\n`, { align: 'RIGHT', size: 10 });
+    await ReactNativePosPrinter.printText(`Cash: P${cashAmount.toFixed(2)}\n`, { align: 'RIGHT', size: 10 });
+    if (change > 0) {
+      await ReactNativePosPrinter.printText(`Change: P${change.toFixed(2)}\n`, { align: 'RIGHT', size: 10 });
+      await ReactNativePosPrinter.newLine(2);
+    }
+
+    await ReactNativePosPrinter.newLine(2);
+
+    // 🔹 Dynamic sleep based on number of items
+    let delay = 1000; // default 1 second
+    if (items.length < 10) delay = 8000;
+    else if (items.length > 25) delay = 15000;
+    else if (items.length > 30) delay = 20000;
+    else if (items.length >= 10) delay = 12000; // optional for medium batch
+
+    await sleep(delay);
+
+    await ReactNativePosPrinter.disconnectPrinter();
+
+    // Save transaction
+    addTransaction({
+      customerName,
+      date: now,
+      items,
+      total,
+      cash: cashAmount,
+      change: change > 0 ? change : 0,
+    });
+
+    Alert.alert('Success', 'Receipt printed successfully!', [
+      { text: 'OK', onPress: () => navigation.popToTop() },
+    ]);
+
+  } catch (error) {
+    console.error(error);
+    Alert.alert('Print Error', error.message);
+  } finally {
+    setPrinting(false);
+  }
+};
 
   const handleConfirmTransaction = () => {
     const cashAmount = parseFloat(cash) || total;
@@ -147,7 +159,16 @@ export default function PreviewScreen({ route, navigation }) {
     <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : null}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={[styles.container, { paddingTop: insets.top + 10 }]}>
-          <Text style={styles.title}>Transaction Preview</Text>
+       
+           <Modal visible={printing} transparent animationType="fade">
+            <View style={styles.loadingOverlay}>
+          <View style={styles.loadingContent}>
+           <ActivityIndicator size="large" color="#fff" />
+           <Text style={styles.loadingText}>Printing...</Text>
+          </View>
+        </View>
+        </Modal>
+
 
           <View style={styles.customerRow}>
             <Pressable onPress={() => { setCustomerName(''); setModalVisible(true); }}>
@@ -236,4 +257,27 @@ const styles = StyleSheet.create({
   modalContent: { backgroundColor: '#fff', borderRadius: 8, padding: 15 },
   input: { borderWidth: 1, borderColor: '#ccc', padding: 10, marginTop: 10, marginBottom: 15, borderRadius: 6 },
   modalBtn: { backgroundColor: '#007AFF', padding: 12, borderRadius: 6, alignItems: 'center' },
+ loadingOverlay: {
+  flex: 1,
+  backgroundColor: 'rgba(0,0,0,0.5)', // semi-transparent background
+  justifyContent: 'center', // vertical center
+  alignItems: 'center', // horizontal center
+},
+
+loadingContent: {
+  justifyContent: 'center',
+  alignItems: 'center',
+  backgroundColor: '#333', // dark background for better contrast
+  padding: 20,
+  borderRadius: 10,
+},
+
+loadingText: {
+  color: '#fff',
+  fontSize: 16,
+  marginTop: 10,
+  fontWeight: 'bold',
+}
+
+
 });

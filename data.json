@@ -1,25 +1,25 @@
 [
   {
     "id": 1,
-    "name": "RED HORSE 500 ML",
+    "name": "REDHORSE 5",
     "retail_price": 70,
     "wholesale_price": 680
   },
   {
     "id": 2,
-    "name": "RED HORSE JUMBO 1L",
+    "name": "REDHORSE JUMBO",
     "retail_price": 140,
     "wholesale_price": 660
   },
   {
     "id": 3,
-    "name": "PALE PILSEN / GRANDE",
+    "name": "GRANDE",
     "retail_price": 130,
     "wholesale_price": 640
   },
   {
     "id": 4,
-    "name": "MAGIC SARAP ",
+    "name": "MAGIC SARAP",
     "retail_price": 6,
     "wholesale_price": 75
   },
@@ -38,17 +38,122 @@
   ,
   {
     "id": 7,
-    "name": "JUICY LEMON SMALL",
+    "name": "JUICYLEMON SMALL",
     "retail_price": 12,
     "wholesale_price": 175
   }
   ,
   {
     "id": 8,
-    "name": "COKE 8 OZ + 1 FUZETEE",
+    "name": "COKE 8OZ",
     "retail_price": 13,
     "wholesale_price": 200
   }
-  
+  ,
+   {
+    "id": 9,
+    "name": "ROYAL 8OZ",
+    "retail_price": 8,
+    "wholesale_price": 190
+  },
+{
+    "id": 10,
+    "name": "SPRITE 8OZ",
+    "retail_price": 8,
+    "wholesale_price": 190
+  },
+  {
+    "id": 11,
+    "name": "COBRA GREEN 290ML ",
+    "retail_price": 8,
+    "wholesale_price": 190
+  },
+  {
+    "id": 12,
+    "name": "Oyster 1/2 Doz",
+    "retail_price": 8,
+    "wholesale_price": 38
+  },
+  {
+    "id": 13,
+    "name": "Oyster 1DOZ",
+    "retail_price": 8,
+    "wholesale_price": 76
+  },
+  {
+    "id": 14,
+    "name": "Oyster 1/2 Doz",
+    "retail_price": 8,
+    "wholesale_price": 38
+  },
+  {
+    "id": 15,
+    "name": "Oyster 1/2 Doz",
+    "retail_price": 8,
+    "wholesale_price": 38
+  },
+  {
+    "id": 16,
+    "name": "Oyster 1/2 Doz",
+    "retail_price": 8,
+    "wholesale_price": 38
+  },
+  {
+    "id": 17,
+    "name": "Oyster 1/2 Doz",
+    "retail_price": 8,
+    "wholesale_price": 38
+  },
+  {
+    "id": 18,
+    "name": "Oyster 1/2 Doz",
+    "retail_price": 8,
+    "wholesale_price": 38
+  },
+  {
+    "id": 19,
+    "name": "Oyster 1/2 Doz",
+    "retail_price": 8,
+    "wholesale_price": 38
+  },
+  {
+    "id": 20,
+    "name": "Oyster 1/2 Doz",
+    "retail_price": 8,
+    "wholesale_price": 38
+  },
+  {
+    "id": 21,
+    "name": "Oyster 1/2 Doz",
+    "retail_price": 8,
+    "wholesale_price": 38
+  },{
+    "id": 22,
+    "name": "Oyster 1/2 Doz",
+    "retail_price": 8,
+    "wholesale_price": 38
+  },{
+    "id": 23,
+    "name": "Oyster 1/2 Doz",
+    "retail_price": 8,
+    "wholesale_price": 38
+  },{
+    "id": 24,
+    "name": "Oyster 1/2 Doz",
+    "retail_price": 8,
+    "wholesale_price": 38
+  },{
+    "id": 25,
+    "name": "Oyster 1/2 Doz",
+    "retail_price": 8,
+    "wholesale_price": 38
+  },
+  {
+    "id": 26,
+    "name": "Oyster 1/2 Doz",
+    "retail_price": 8,
+    "wholesale_price": 38
+  }
+
 
 ]

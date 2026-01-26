@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { enableScreens } from 'react-native-screens';
 import { Image } from 'react-native';
+import { StatusBar } from 'react-native';
 
 
 import HomeScreen from './screens/HomeScreen';
@@ -90,6 +91,11 @@ export default function App() {
     <TransactionProvider>
     <SafeAreaProvider>
       <NavigationContainer>
+        <StatusBar
+        barStyle="dark-content"
+        translucent
+        
+      />
         <RootStack />
       </NavigationContainer>
     </SafeAreaProvider>
