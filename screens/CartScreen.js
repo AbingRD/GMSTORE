@@ -6,7 +6,7 @@ import {
   StyleSheet,
   Pressable,
 } from 'react-native';
-import { Image, SearchBar } from 'react-native-elements';
+import { SearchBar, Image } from 'react-native-elements';
 import products from '../data.json';
 
 /* ---------- Cart Row ---------- */
@@ -36,9 +36,22 @@ const CartRow = React.memo(({ item, onUpdate }) => {
 
 /* ---------- Screen ---------- */
 export default function CartScreen({ navigation }) {
+  const CATEGORIES = [
+    'All',
+    'Cigarettes',
+    'Beers & Drinks',
+    'Uncategorized'
+  ];
+
+  const [selectedCategory, setSelectedCategory] = useState('All');
   const [search, setSearch] = useState('');
+
   const [items, setItems] = useState(
-    products.map(p => ({ ...p, quantity: 0 }))
+    products.map(p => ({
+      ...p,
+      category: p.category ?? 'Uncategorized',
+      quantity: 0,
+    }))
   );
 
   /* Update quantity */
@@ -52,16 +65,24 @@ export default function CartScreen({ navigation }) {
     );
   }, []);
 
-  /* Filter + SORT A–Z */
+  /* Filter + Category + Sort */
   const filteredItems = useMemo(() => {
     return items
-      .filter(item =>
-        item.name.toLowerCase().includes(search.toLowerCase())
-      )
+      .filter(item => {
+        const matchesSearch = item.name
+          .toLowerCase()
+          .includes(search.toLowerCase());
+
+        const matchesCategory =
+          selectedCategory === 'All' ||
+          item.category === selectedCategory;
+
+        return matchesSearch && matchesCategory;
+      })
       .sort((a, b) =>
         a.name.localeCompare(b.name, undefined, { sensitivity: 'base' })
       );
-  }, [items, search]);
+  }, [items, search, selectedCategory]);
 
   /* Selected items */
   const selectedItems = useMemo(
@@ -98,10 +119,35 @@ export default function CartScreen({ navigation }) {
         searchIcon={
           <Image
             source={require('../assets/searchglass.png')}
-            style={{ width: 25, height: 25 }}
+            style={{ width: 22, height: 22 }}
           />
         }
       />
+
+      {/* Categories */}
+     {/* Categories */}
+<View style={styles.categoryWrapper}>
+  {CATEGORIES.map(cat => (
+    <Pressable
+      key={cat}
+      onPress={() => setSelectedCategory(cat)}
+      style={[
+        styles.categoryBtn,
+        selectedCategory === cat && styles.categoryBtnActive,
+      ]}
+    >
+      <Text
+        style={[
+          styles.categoryText,
+          selectedCategory === cat && styles.categoryTextActive,
+        ]}
+      >
+        {cat}
+      </Text>
+    </Pressable>
+  ))}
+</View>
+
 
       {/* Header */}
       <View style={styles.headerRow}>
@@ -110,6 +156,7 @@ export default function CartScreen({ navigation }) {
         <Text style={styles.headerPrice}>Price</Text>
       </View>
 
+      {/* List */}
       <FlatList
         data={filteredItems}
         keyExtractor={item => item.id.toString()}
@@ -153,6 +200,24 @@ const styles = StyleSheet.create({
   },
   inputContainer: { backgroundColor: '#eee', borderRadius: 25 },
 
+  categoryWrapper: {
+  flexDirection: 'row',
+  flexWrap: 'wrap',      // 👈 wrap to next line
+  marginBottom: 15,
+},
+categoryBtn: {
+  paddingHorizontal: 15,
+  paddingVertical: 6,
+  backgroundColor: '#eee',
+  borderRadius: 25,
+  marginRight: 8,
+  marginBottom: 8,       // 👈 spacing for wrapped lines
+},
+categoryBtnActive: { backgroundColor: '#007AFF' },
+categoryText: { color: '#333', fontSize: 16 },
+categoryTextActive: { color: '#fff', fontWeight: 'bold' },
+
+
   headerRow: {
     flexDirection: 'row',
     paddingVertical: 10,
@@ -177,11 +242,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  qtyBtn: {
-    fontSize: 35,
-    paddingHorizontal: 12,
-    fontWeight: 'bold',
-  },
+  qtyBtn: { fontSize: 32, paddingHorizontal: 12, fontWeight: 'bold' },
   qty: { fontSize: 16, minWidth: 24, textAlign: 'center' },
   price: { flex: 1, textAlign: 'right' },
 

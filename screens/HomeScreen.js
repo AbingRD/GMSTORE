@@ -1,9 +1,30 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity, Image } from 'react-native';
+import React, { useState, useMemo } from 'react';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, Image,Pressable } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 import products from '../data.json'; // your sample data
 
 export default function HomeScreen({ navigation }) {
+//     const CATEGORIES = [
+//   'All',
+//   'Cigarettes',
+//   'Beers & Drinks',
+//   'Stationery',
+// ];
+// const [selectedCategory, setSelectedCategory] = useState('All');
+// const filteredItems = useMemo(() => {
+//   return items.filter(item => {
+//     const matchesSearch = item.name
+//       .toLowerCase()
+//       .includes(search.toLowerCase());
+
+//     const matchesCategory =
+//       selectedCategory === 'All' ||
+//       item.category === selectedCategory;
+
+//     return matchesSearch && matchesCategory;
+//   });
+// }, [items, search, selectedCategory]);
+
   const [search, setSearch] = useState('');
 
   const filteredProducts = products
@@ -50,6 +71,31 @@ export default function HomeScreen({ navigation }) {
         <Text style={styles.headerRetail}>Retail</Text>
         <Text style={styles.headerText}>Wholesale</Text>
       </View>
+          {/* <FlatList
+  data={CATEGORIES}
+  horizontal
+  showsHorizontalScrollIndicator={false}
+  keyExtractor={(item) => item}
+  style={{ marginBottom: 10 }}
+  renderItem={({ item }) => (
+    <Pressable
+      onPress={() => setSelectedCategory(item)}
+      style={[
+        styles.categoryBtn,
+        selectedCategory === item && styles.categoryBtnActive
+      ]}
+    >
+      <Text
+        style={[
+          styles.categoryText,
+          selectedCategory === item && styles.categoryTextActive
+        ]}
+      >
+        {item}
+      </Text>
+    </Pressable>
+  )}
+/> */}
 
       {/* Product List */}
       <FlatList style={styles.listStyle}
@@ -87,21 +133,22 @@ const styles = StyleSheet.create({
      flexDirection: 'row', paddingVertical: 10, borderBottomWidth: 2, borderColor: '#9f8f8f'
      },
   headerText: {
-     flex: 1, fontSize: 16, fontWeight: 'bold', textAlign: 'center' 
+     flex: 1, fontSize: 18, fontWeight: 'bold', textAlign: 'center' 
     },
   headerRetail: {
-     flex: 1, fontSize: 16, fontWeight: 'bold', textAlign: 'center', paddingLeft: 50 
+     flex: 1, fontSize: 18, fontWeight: 'bold', textAlign: 'center', paddingLeft: 50 
     },
   row: { 
     flexDirection: 'row', paddingVertical: 12, borderBottomWidth: 1, borderColor: '#e0e0e0'
  },
   name: {
-     flex: 1.5, fontSize: 15 
+     flex: 1.5, fontSize: 16 
     },
   price: {
-     flex: 1, textAlign: 'center', fontSize: 15 
+     flex: 1, textAlign: 'center', fontSize: 16 
     },
     listStyle:{
+        
         
 
     },

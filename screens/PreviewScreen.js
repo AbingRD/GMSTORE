@@ -20,7 +20,7 @@ import ReactNativePosPrinter from 'react-native-thermal-pos-printer';
 import { TransactionContext } from './TransactionContext';
 
 const printerMac = '10:22:33:3B:93:A5'; // replace with your printer MAC
-//WORK FOR UI ON THIS
+
 export default function PreviewScreen({ route, navigation }) {
   const { items, total } = route.params;
   const insets = useSafeAreaInsets();
@@ -28,10 +28,12 @@ export default function PreviewScreen({ route, navigation }) {
 
   const [customerName, setCustomerName] = useState('Customer');
   const [modalVisible, setModalVisible] = useState(false);
-  const [cash, setCash] = useState(''); // for input
-    const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms)); //added for printing issue is It cannot print if items more than 30
+  const [cash, setCash] = useState(''); 
   const [printing, setPrinting] = useState(false);
 
+  const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+  // Request necessary permissions for Android 12+
   const requestPermissions = async () => {
     if (Platform.OS === 'android' && Platform.Version >= 31) {
       const granted = await PermissionsAndroid.requestMultiple([
@@ -48,7 +50,8 @@ export default function PreviewScreen({ route, navigation }) {
     }
   };
 
-const printReceipt = async () => {
+  // Print receipt, accepts number of copies
+  const printReceipt = async (copies = 1) => {
   try {
     setPrinting(true);
 
@@ -60,63 +63,63 @@ const printReceipt = async () => {
     const now = new Date();
     const dateStr = now.toLocaleDateString();
     const timeStr = now.toLocaleTimeString();
-
     const cashAmount = parseFloat(cash) || total;
     const change = cashAmount - total;
 
-    // --- HEADER ---
-    await ReactNativePosPrinter.printText(`ABING STORE\n`, { align: 'CENTER', size: 14, bold: true });
-    await ReactNativePosPrinter.printText(`09167640132\n`, { align: 'CENTER', size: 12 });
-     await ReactNativePosPrinter.printText(`TNo:${txnNumber}      ${dateStr}      ${timeStr}\n`, { align: 'LEFT', size: 9 });
-    await ReactNativePosPrinter.printText(`Customer: ${customerName}\n`, { align: 'LEFT', size: 9 });
-    await ReactNativePosPrinter.printText(`--------------------------------`);
+    for (let c = 0; c < copies; c++) {
+      const isCopy = c > 0; // first receipt is original, others are copies
 
-    // --- ITEMS ---
-   
-   // --- ITEMS ---
-for (const item of items) {
-  const lineTotal = item.wholesale_price * item.quantity;
-    // const LEFT_MARGIN = '  '; // 2 spaces
-  // Smaller text (size 8)
-  await ReactNativePosPrinter.printText(
-  `${item.name.substring(0, 23).padEnd(23)} ₱${lineTotal}\n\n`,
-  {  size: 9, bold: false }
-);
-  await ReactNativePosPrinter.printText(
-   
-    ` ₱${item.wholesale_price} x ${item.quantity}\n\n\n`,
-    { align: 'LEFT', size: 9, bold: false }
-  );
-   ReactNativePosPrinter.newLine();
-}
+      // --- HEADER ---
+      if (!isCopy) {
+        await ReactNativePosPrinter.printText(`DanJ Store\n`, { align: 'CENTER', size: 14, bold: true });
+        await ReactNativePosPrinter.printText(`09167640132\n`, { align: 'CENTER', size: 12 });
+        await ReactNativePosPrinter.printText(`TNo:${txnNumber}      ${dateStr}      ${timeStr}\n`, { align: 'LEFT', size: 9 });
+      }
 
+      // --- Customer ---
+      await ReactNativePosPrinter.printText(`Customer: ${customerName}\n`, { align: 'LEFT', size: 9 });
+      await ReactNativePosPrinter.printText(`--------------------------------`);
 
-    await ReactNativePosPrinter.printText(`--------------------------------\n`);
-    await ReactNativePosPrinter.printText(`Grand Total: ₱${total.toFixed(2)}\n`, { align: 'RIGHT', size: 10 });
-    await ReactNativePosPrinter.printText(`Cash: ₱${cashAmount.toFixed(2)}\n`, { align: 'RIGHT', size: 10 });
-    if (change > 0) {
-      await ReactNativePosPrinter.printText(`Change: ₱${change.toFixed(2)}\n`, { align: 'RIGHT', size: 10 });
-      await ReactNativePosPrinter.newLine(2);
-    }
+      // --- ITEMS ---
+      for (const item of items) {
+        const lineTotal = item.wholesale_price * item.quantity;
+        await ReactNativePosPrinter.printText(
+          `${item.name.substring(0, 23).padEnd(20)} ₱${lineTotal}\n\n`,
+          { size: 9, bold: false }
+        );
+        await ReactNativePosPrinter.printText(
+          ` ₱${item.wholesale_price} x ${item.quantity}\n\n\n`,
+          { align: 'LEFT', size: 9, bold: false }
+        );
+        
+        ReactNativePosPrinter.newLine(1);
+      }
 
-    await ReactNativePosPrinter.newLine(2);
+      await ReactNativePosPrinter.printText(`--------------------------------\n`);
+      await ReactNativePosPrinter.printText(`Grand Total: ₱${total.toFixed(2)}\n`, { align: 'RIGHT', size: 10 });
+      await ReactNativePosPrinter.printText(`Cash: ₱${cashAmount.toFixed(2)}\n`, { align: 'RIGHT', size: 10 });
+      if (change > 0) {
+        await ReactNativePosPrinter.printText(`Change: ₱${change.toFixed(2)}\n`, { align: 'RIGHT', size: 10 });
+        await ReactNativePosPrinter.newLine(2);
+      }
 
-    // 🔹 Dynamic sleep based on number of items
-    // 🔹 Dynamic sleep based on number of items
-let delay = 0;
+      await ReactNativePosPrinter.newLine(3);
 
-    if (items.length < 10) {
+       let delay = 0;
+  if (items.length < 10) {
     delay = 1800; 
-    } else if (items.length < 15 || items.lenght > 15) {
-  delay = 3500; 
-    } else if(items.length < 25 || items.length > 25) {
-  delay = 5600; // 15 seconds for large batch
-    }
-    else if(items.length > 35){
-     delay = 7700; 
-    }
-    await sleep(delay);
+  } else if (items.length < 15 || items.length > 15) {
+    delay = 3500; 
+  } else if(items.length < 25 || items.length > 25) {
+    delay = 5600; 
+  } else if(items.length > 35){
+    delay = 7700; 
+  }
+  await sleep(delay); // pause so printer can catch up
 
+  // small delay between copies
+  if (copies > 1) await sleep(500);
+}
 
     await ReactNativePosPrinter.disconnectPrinter();
 
@@ -133,7 +136,6 @@ let delay = 0;
     Alert.alert('Success', 'Receipt printed successfully!', [
       { text: 'OK', onPress: () => navigation.popToTop() },
     ]);
-
   } catch (error) {
     console.error(error);
     Alert.alert('Print Error', error.message);
@@ -142,6 +144,8 @@ let delay = 0;
   }
 };
 
+
+  // Handle Confirm Transaction alert with 3 options
   const handleConfirmTransaction = () => {
     const cashAmount = parseFloat(cash) || total;
 
@@ -156,10 +160,11 @@ let delay = 0;
 
     Alert.alert(
       'Print Receipt',
-      'Do you want to print the receipt?',
+      'Select an option:',
       [
         { text: 'Cancel', style: 'cancel' },
-        { text: 'Print Receipt', onPress: printReceipt },
+        { text: 'Print', onPress: () => printReceipt(1) },
+        { text: '2 Copies', onPress: () => printReceipt(2) },
       ],
       { cancelable: true }
     );
@@ -180,17 +185,18 @@ let delay = 0;
     <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : null}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={[styles.container, { paddingTop: insets.top + 10 }]}>
-       
-           <Modal visible={printing} transparent animationType="fade">
+
+          {/* Printing Overlay */}
+          <Modal visible={printing} transparent animationType="fade">
             <View style={styles.loadingOverlay}>
-          <View style={styles.loadingContent}>
-           <ActivityIndicator size="large" color="#fff" />
-           <Text style={styles.loadingText}>Printing...</Text>
-          </View>
-        </View>
-        </Modal>
+              <View style={styles.loadingContent}>
+                <ActivityIndicator size="large" color="#fff" />
+                <Text style={styles.loadingText}>Printing...</Text>
+              </View>
+            </View>
+          </Modal>
 
-
+          {/* Customer + Date */}
           <View style={styles.customerRow}>
             <Pressable onPress={() => { setCustomerName(''); setModalVisible(true); }}>
               <Text style={styles.customerText}>
@@ -202,12 +208,14 @@ let delay = 0;
             </Text>
           </View>
 
+          {/* Header */}
           <View style={styles.headerRow}>
             <Text style={styles.headerName}>Item</Text>
             <Text style={styles.headerCalc}>Price x Qty</Text>
             <Text style={styles.headerTotal}>Total</Text>
           </View>
 
+          {/* Items */}
           <FlatList
             data={items}
             keyExtractor={(item) => item.id.toString()}
@@ -215,7 +223,7 @@ let delay = 0;
             contentContainerStyle={{ paddingBottom: 160 }}
           />
 
-          {/* Footer with Grand Total + Cash input */}
+          {/* Footer */}
           <View style={styles.footer}>
             <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
               <Text style={styles.grandTotal}>Grand Total: ₱{total.toFixed(2)}</Text>
@@ -258,7 +266,6 @@ let delay = 0;
 
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 15 },
-  title: { fontSize: 20, fontWeight: 'bold', marginBottom: 10 },
   customerRow: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 15 },
   customerText: { fontWeight: 'bold', fontSize: 16 },
   dateText: { fontSize: 14, color: '#555' },
@@ -278,27 +285,7 @@ const styles = StyleSheet.create({
   modalContent: { backgroundColor: '#fff', borderRadius: 8, padding: 15 },
   input: { borderWidth: 1, borderColor: '#ccc', padding: 10, marginTop: 10, marginBottom: 15, borderRadius: 6 },
   modalBtn: { backgroundColor: '#007AFF', padding: 12, borderRadius: 6, alignItems: 'center' },
- loadingOverlay: {
-  flex: 1,
-  backgroundColor: 'rgba(0,0,0,0.5)', // semi-transparent background
-  justifyContent: 'center', // vertical center
-  alignItems: 'center', // horizontal center
-},
-
-loadingContent: {
-  justifyContent: 'center',
-  alignItems: 'center',
-  backgroundColor: '#333', // dark background for better contrast
-  padding: 20,
-  borderRadius: 10,
-},
-
-loadingText: {
-  color: '#fff',
-  fontSize: 16,
-  marginTop: 10,
-  fontWeight: 'bold',
-}
-
-
+  loadingOverlay: { flex: 1, backgroundColor: 'rgba(0,0,0,0.5)', justifyContent: 'center', alignItems: 'center' },
+  loadingContent: { justifyContent: 'center', alignItems: 'center', backgroundColor: '#333', padding: 20, borderRadius: 10 },
+  loadingText: { color: '#fff', fontSize: 16, marginTop: 10, fontWeight: 'bold' },
 });

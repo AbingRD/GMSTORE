@@ -3,137 +3,190 @@
     "id": 1,
     "name": "Redhorse 5",
     "retail_price": 70,
-    "wholesale_price": 680
+    "wholesale_price": 680,
+    "category": "Beers & Drinks"
+    
   },
   {
     "id": 2,
     "name": "Redhorse Jumbo",
     "retail_price": 140,
-    "wholesale_price": 660
+    "wholesale_price": 660,
+    "category": "Beers & Drinks"
   },
   {
     "id": 3,
     "name": "Grande",
     "retail_price": 130,
-    "wholesale_price": 640
+    "wholesale_price": 640,
+    "category": "Beers & Drinks"
   },
   {
     "id": 4,
     "name": "Magic Sarap",
     "retail_price": 6,
-    "wholesale_price": 75
+    "wholesale_price": 75,
+    "category": "Uncategorized"
   },
   {
     "id": 5,
     "name": "Vitsen",
     "retail_price": 5,
-    "wholesale_price": 61
+    "wholesale_price": 61,
+    "category": "Uncategorized"
   },
   {
     "id": 6,
     "name": "Ginisa",
     "retail_price": 5,
-    "wholesale_price": 52
+    "wholesale_price": 52,
+    "category": "Uncategorized"
   }
   ,
   {
     "id": 7,
     "name": "JuicyLemon Small",
     "retail_price": 12,
-    "wholesale_price": 175
+    "wholesale_price": 175,
+    "category": "Beers & Drinks"
   }
   ,
   {
     "id": 8,
-    "name": "Coke 8pz",
+    "name": "Coke 8oz",
     "retail_price": 13,
-    "wholesale_price": 200
+    "wholesale_price": 200,
+    "category": "Beers & Drinks"
   }
   ,
    {
     "id": 9,
-    "name": "ROYAL 8OZ",
+    "name": "Royal 8OZ",
     "retail_price": 8,
-    "wholesale_price": 190
+    "wholesale_price": 190,
+    "category": "Beers & Drinks"
   },
 {
     "id": 10,
-    "name": "SPRITE 8OZ",
+    "name": "Sprite 8OZ",
     "retail_price": 8,
-    "wholesale_price": 190
+    "wholesale_price": 190,
+    "category": "Beers & Drinks"
   },
   {
     "id": 11,
-    "name": "COBRA GREEN 290ML ",
+    "name": "Cobra green 290ml ",
     "retail_price": 8,
-    "wholesale_price": 190
+    "wholesale_price": 190,
+    "category": "Beers & Drinks"
   },
   {
     "id": 12,
-    "name": "Winston",
+    "name": "Winston Pack",
     "retail_price": 9,
-    "wholesale_price": 163
+    "wholesale_price": 163,
+    "category": "Cigarettes"
+    
   },
   {
     "id": 13,
-    "name": "Mighty White",
+    "name": "Mighty Whit Pack",
     "retail_price": 8,
-    "wholesale_price": 145
+    "wholesale_price": 145,
+    "category": "Cigarettes"
   },
   {
     "id": 14,
-    "name": "Mighty Red",
+    "name": "Mighty Red Pack",
     "retail_price": 8,
-    "wholesale_price": 145
+    "wholesale_price": 145,
+    "category": "Cigarettes"
   },
   {
     "id": 15,
-    "name": "Marlboro Red",
+    "name": "Marlboro Red Pack",
     "retail_price": 9,
-    "wholesale_price": 155
+    "wholesale_price": 155,
+    "category": "Cigarettes"
   },
   {
     "id": 16,
-    "name": "Marlboro Iceblast",
+    "name": "Marlboro Blast Pack",
     "retail_price": 9,
-    "wholesale_price": 155
+    "wholesale_price": 155,
+    "category": "Cigarettes"
   },
   {
     "id": 17,
-    "name": "Hope",
+    "name": "Hope Pack",
     "retail_price": 8,
-    "wholesale_price": 147
+    "wholesale_price": 147,
+    "category": "Cigarettes"
   },
   {
     "id": 18,
-    "name": "Chesterfield RedXl",
+    "name": "Chesterfield RedXl Pack",
     "retail_price": 7,
-    "wholesale_price": 128
+    "wholesale_price": 128,
+    "category": "Cigarettes"
   },
   {
     "id": 19,
-    "name": "Chesterfield White",
+    "name": "Chesterfield White Pack",
     "retail_price": 7,
-    "wholesale_price": 128
+    "wholesale_price": 128,
+    "category": "Cigarettes"
   },
   {
     "id": 20,
-    "name": "Chesterfield RedOrig",
+    "name": "Chesterfield RedOrig Pack",
     "retail_price": 7,
-    "wholesale_price": 128
+    "wholesale_price": 128,
+    "category": "Cigarettes"
   },
   {
     "id": 21,
-    "name": "Mighty Blast",
+    "name": "Mighty Blast Pack",
     "retail_price": 8,
-    "wholesale_price": 145
+    "wholesale_price": 145,
+    "category": "Cigarettes"
   },
   {
     "id": 22,
-    "name": "Camel Cigar",
+    "name": "Camel Pack",
     "retail_price": 7,
-    "wholesale_price": 135
+    "wholesale_price": 135,
+    "category": "Cigarettes"
+  },
+  {
+    "id": 23,
+    "name": "Winston Ream",
+    "retail_price": 163,
+    "wholesale_price": 1630,
+    "category": "Cigarettes"
+  },
+  {
+    "id": 24,
+    "name": "Mighty Red Ream",
+    "retail_price": 145,
+    "wholesale_price": 1450,
+    "category": "Cigarettes"
+  },
+  {
+    "id": 25,
+    "name": "Camel Ream",
+    "retail_price": 7,
+    "wholesale_price": 1350,
+    "category": "Cigarettes"
+  },
+  {
+    "id": 26,
+    "name": "Mighty White Ream",
+    "retail_price": 145.5,
+    "wholesale_price": 1450,
+    "category": "Cigarettes"
   }
   
+
   
 ]
