@@ -95,7 +95,7 @@ export default function PreviewScreen({ route, navigation }) {
         ReactNativePosPrinter.newLine(1);
       }
 
-      await ReactNativePosPrinter.printText(`--------------------------------\n`);
+      await ReactNativePosPrinter.printText(`--------------------------------`);
       await ReactNativePosPrinter.printText(`Grand Total: ₱${total.toFixed(2)}\n`, { align: 'RIGHT', size: 10 });
       await ReactNativePosPrinter.printText(`Cash: ₱${cashAmount.toFixed(2)}\n`, { align: 'RIGHT', size: 10 });
       if (change > 0) {

@@ -243,7 +243,7 @@ categoryTextActive: { color: '#fff', fontWeight: 'bold' },
     alignItems: 'center',
   },
   qtyBtn: { fontSize: 32, paddingHorizontal: 12, fontWeight: 'bold' },
-  qty: { fontSize: 16, minWidth: 24, textAlign: 'center' },
+  qty: { fontSize: 18, minWidth: 24, textAlign: 'center' },
   price: { flex: 1, textAlign: 'right' },
 
   preview: {
