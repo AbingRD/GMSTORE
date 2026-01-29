@@ -1,41 +1,44 @@
 import React, { useState, useMemo } from 'react';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity, Image,Pressable } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  TouchableOpacity,
+  Pressable,
+  Image,
+} from 'react-native';
 import { SearchBar } from 'react-native-elements';
-import products from '../data.json'; // your sample data
+import products from '../data.json';
 
 export default function HomeScreen({ navigation }) {
-//     const CATEGORIES = [
-//   'All',
-//   'Cigarettes',
-//   'Beers & Drinks',
-//   'Stationery',
-// ];
-// const [selectedCategory, setSelectedCategory] = useState('All');
-// const filteredItems = useMemo(() => {
-//   return items.filter(item => {
-//     const matchesSearch = item.name
-//       .toLowerCase()
-//       .includes(search.toLowerCase());
-
-//     const matchesCategory =
-//       selectedCategory === 'All' ||
-//       item.category === selectedCategory;
-
-//     return matchesSearch && matchesCategory;
-//   });
-// }, [items, search, selectedCategory]);
+  const CATEGORIES = ['All', 'Cigarettes', 'Beers & Drinks', 'Uncategorized'];
 
   const [search, setSearch] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('All');
 
-  const filteredProducts = products
-    .filter(item => item.name.toLowerCase().includes(search.toLowerCase()))
-    .sort((a, b) => a.name.localeCompare(b.name));
+  // Filtered products based on search and category
+  const filteredProducts = useMemo(() => {
+    return products
+      .filter(item => {
+        const name = item.name || '';
+        const matchesSearch = name.toLowerCase().includes(search.toLowerCase());
+        const matchesCategory =
+          selectedCategory === 'All' || item.category === selectedCategory;
+        return matchesSearch && matchesCategory;
+      })
+      .sort((a, b) => {
+        const nameA = (a.name || '').toLowerCase();
+        const nameB = (b.name || '').toLowerCase();
+        return nameA.localeCompare(nameB);
+      });
+  }, [search, selectedCategory]);
 
   const renderItem = ({ item }) => (
     <View style={styles.row}>
-      <Text style={styles.name}>{item.name}</Text>
-      <Text style={styles.price}>₱{item.retail_price}</Text>
-      <Text style={styles.price}>₱{item.wholesale_price}</Text>
+      <Text style={styles.name}>{item.name || 'No Name'}</Text>
+      <Text style={styles.price}>₱{item.retail_price || 0}</Text>
+      <Text style={styles.price}>₱{item.wholesale_price || 0}</Text>
     </View>
   );
 
@@ -65,91 +68,110 @@ export default function HomeScreen({ navigation }) {
         </TouchableOpacity>
       </View>
 
+      {/* Category wrapper */}
+      <View style={styles.categoryWrapper}>
+        {CATEGORIES.map(cat => (
+          <Pressable
+            key={cat}
+            onPress={() => setSelectedCategory(cat)}
+            style={[
+              styles.categoryBtn,
+              selectedCategory === cat && styles.categoryBtnActive,
+            ]}
+          >
+            <Text
+              style={[
+                styles.categoryText,
+                selectedCategory === cat && styles.categoryTextActive,
+              ]}
+            >
+              {cat}
+            </Text>
+          </Pressable>
+        ))}
+      </View>
+
       {/* Header */}
       <View style={styles.headerRow}>
         <Text style={styles.headerText}>Products</Text>
-        <Text style={styles.headerRetail}>Retail</Text>
-        <Text style={styles.headerText}>Wholesale</Text>
+        <Text style={styles.headerPrice}>Retail</Text>
+        <Text style={styles.headerPrice}>Wholesale</Text>
       </View>
-          {/* <FlatList
-  data={CATEGORIES}
-  horizontal
-  showsHorizontalScrollIndicator={false}
-  keyExtractor={(item) => item}
-  style={{ marginBottom: 10 }}
-  renderItem={({ item }) => (
-    <Pressable
-      onPress={() => setSelectedCategory(item)}
-      style={[
-        styles.categoryBtn,
-        selectedCategory === item && styles.categoryBtnActive
-      ]}
-    >
-      <Text
-        style={[
-          styles.categoryText,
-          selectedCategory === item && styles.categoryTextActive
-        ]}
-      >
-        {item}
-      </Text>
-    </Pressable>
-  )}
-/> */}
 
       {/* Product List */}
-      <FlatList style={styles.listStyle}
+      <FlatList
         data={filteredProducts}
-        keyExtractor={item => item.id.toString()}
+        keyExtractor={(item, index) => (item.id != null ? item.id.toString() : index.toString())}
         renderItem={renderItem}
         showsVerticalScrollIndicator={false}
+        ListEmptyComponent={
+          <Text style={{ textAlign: 'center', marginTop: 20 }}>No products found</Text>
+        }
       />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container:{ 
-    flex: 1, paddingTop: 45, paddingHorizontal: 15, backgroundColor: '#f9f9f9' 
-
-   },
-  searchRow:{ 
-    flexDirection: 'row', alignItems: 'center', marginBottom: 15
-    },
-
-  searchContainer: { 
-    flex: 1, backgroundColor: 'transparent', borderTopWidth: 0, borderBottomWidth: 0 
-
+  container: {
+    flex: 1,
+    paddingTop: 45,
+    paddingHorizontal: 15,
+    backgroundColor: '#f9f9f9',
   },
-  inputContainer:
-   { 
-    backgroundColor: '#eee', borderRadius: 25, height: 50, paddingHorizontal: 10 
-
-   },
-  cartIcon: { 
-    width: 40, height: 35, marginLeft: 10 ,tintColor: '#989292',
-},
+  searchRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 15,
+  },
+  searchContainer: {
+    flex: 1,
+    backgroundColor: 'transparent',
+    borderTopWidth: 0,
+    borderBottomWidth: 0,
+  },
+  inputContainer: {
+    backgroundColor: '#eee',
+    borderRadius: 25,
+    height: 50,
+    paddingHorizontal: 10,
+  },
+  cartIcon: {
+    width: 40,
+    height: 35,
+    marginLeft: 10,
+    tintColor: '#989292',
+  },
+  categoryWrapper: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginBottom: 10,
+  },
+  categoryBtn: {
+    paddingHorizontal: 15,
+    paddingVertical: 6,
+    backgroundColor: '#eee',
+    borderRadius: 25,
+    marginRight: 8,
+    marginBottom: 8,
+  },
+  categoryBtnActive: { backgroundColor: '#007AFF' },
+  categoryText: { color: '#333', fontSize: 16 },
+  categoryTextActive: { color: '#fff', fontWeight: 'bold' },
   headerRow: {
-     flexDirection: 'row', paddingVertical: 10, borderBottomWidth: 2, borderColor: '#9f8f8f'
-     },
-  headerText: {
-     flex: 1, fontSize: 18, fontWeight: 'bold', textAlign: 'center' 
-    },
-  headerRetail: {
-     flex: 1, fontSize: 18, fontWeight: 'bold', textAlign: 'center', paddingLeft: 50 
-    },
-  row: { 
-    flexDirection: 'row', paddingVertical: 12, borderBottomWidth: 1, borderColor: '#e0e0e0'
- },
-  name: {
-     flex: 1.5, fontSize: 16 
-    },
-  price: {
-     flex: 1, textAlign: 'center', fontSize: 16 
-    },
-    listStyle:{
-        
-        
-
-    },
+    flexDirection: 'row',
+    paddingVertical: 10,
+    borderBottomWidth: 2,
+    borderColor: '#ccc',
+  },
+  headerText: { flex: 1.5, fontSize: 18, fontWeight: 'bold', textAlign: 'center' },
+  headerPrice: { flex: 1, fontSize: 18, fontWeight: 'bold', textAlign: 'center' },
+  row: {
+    flexDirection: 'row',
+    paddingVertical: 12,
+    borderBottomWidth: 1,
+    borderColor: '#e0e0e0',
+  },
+  name: { flex: 1.5, fontSize: 16 },
+  price: { flex: 1, textAlign: 'center', fontSize: 16 },
 });

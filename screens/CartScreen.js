@@ -13,7 +13,7 @@ import products from '../data.json';
 const CartRow = React.memo(({ item, onUpdate }) => {
   return (
     <View style={styles.row}>
-      <Text style={styles.name}>{item.name}</Text>
+      <Text style={styles.name}>{item.name || 'No Name'}</Text>
 
       <View style={styles.qtyRow}>
         <Pressable onPress={() => onUpdate(item.id, -1)}>
@@ -28,7 +28,7 @@ const CartRow = React.memo(({ item, onUpdate }) => {
       </View>
 
       <Text style={styles.price}>
-        ₱{(item.wholesale_price * item.quantity).toFixed(2)}
+        ₱{((item.wholesale_price || 0) * item.quantity).toFixed(2)}
       </Text>
     </View>
   );
@@ -65,22 +65,17 @@ export default function CartScreen({ navigation }) {
     );
   }, []);
 
-  /* Filter + Category + Sort */
+  /* Filter + Category + Search + Sort */
   const filteredItems = useMemo(() => {
     return items
       .filter(item => {
-        const matchesSearch = item.name
-          .toLowerCase()
-          .includes(search.toLowerCase());
-
-        const matchesCategory =
-          selectedCategory === 'All' ||
-          item.category === selectedCategory;
-
+        const itemName = item.name || '';
+        const matchesSearch = itemName.toLowerCase().includes(search.toLowerCase());
+        const matchesCategory = selectedCategory === 'All' || item.category === selectedCategory;
         return matchesSearch && matchesCategory;
       })
       .sort((a, b) =>
-        a.name.localeCompare(b.name, undefined, { sensitivity: 'base' })
+        (a.name || '').localeCompare(b.name || '', undefined, { sensitivity: 'base' })
       );
   }, [items, search, selectedCategory]);
 
@@ -94,7 +89,7 @@ export default function CartScreen({ navigation }) {
   const total = useMemo(
     () =>
       selectedItems.reduce(
-        (sum, item) => sum + item.wholesale_price * item.quantity,
+        (sum, item) => sum + (item.wholesale_price || 0) * item.quantity,
         0
       ),
     [selectedItems]
@@ -125,29 +120,27 @@ export default function CartScreen({ navigation }) {
       />
 
       {/* Categories */}
-     {/* Categories */}
-<View style={styles.categoryWrapper}>
-  {CATEGORIES.map(cat => (
-    <Pressable
-      key={cat}
-      onPress={() => setSelectedCategory(cat)}
-      style={[
-        styles.categoryBtn,
-        selectedCategory === cat && styles.categoryBtnActive,
-      ]}
-    >
-      <Text
-        style={[
-          styles.categoryText,
-          selectedCategory === cat && styles.categoryTextActive,
-        ]}
-      >
-        {cat}
-      </Text>
-    </Pressable>
-  ))}
-</View>
-
+      <View style={styles.categoryWrapper}>
+        {CATEGORIES.map(cat => (
+          <Pressable
+            key={cat}
+            onPress={() => setSelectedCategory(cat)}
+            style={[
+              styles.categoryBtn,
+              selectedCategory === cat && styles.categoryBtnActive,
+            ]}
+          >
+            <Text
+              style={[
+                styles.categoryText,
+                selectedCategory === cat && styles.categoryTextActive,
+              ]}
+            >
+              {cat}
+            </Text>
+          </Pressable>
+        ))}
+      </View>
 
       {/* Header */}
       <View style={styles.headerRow}>
@@ -159,9 +152,12 @@ export default function CartScreen({ navigation }) {
       {/* List */}
       <FlatList
         data={filteredItems}
-        keyExtractor={item => item.id.toString()}
+        keyExtractor={(item, index) => (item.id != null ? item.id.toString() : index.toString())}
         renderItem={renderItem}
         contentContainerStyle={{ paddingBottom: 140 }}
+        ListEmptyComponent={
+          <Text style={{ textAlign: 'center', marginTop: 20 }}>No products found</Text>
+        }
       />
 
       {/* Preview */}
@@ -201,22 +197,21 @@ const styles = StyleSheet.create({
   inputContainer: { backgroundColor: '#eee', borderRadius: 25 },
 
   categoryWrapper: {
-  flexDirection: 'row',
-  flexWrap: 'wrap',      // 👈 wrap to next line
-  marginBottom: 15,
-},
-categoryBtn: {
-  paddingHorizontal: 15,
-  paddingVertical: 6,
-  backgroundColor: '#eee',
-  borderRadius: 25,
-  marginRight: 8,
-  marginBottom: 8,       // 👈 spacing for wrapped lines
-},
-categoryBtnActive: { backgroundColor: '#007AFF' },
-categoryText: { color: '#333', fontSize: 16 },
-categoryTextActive: { color: '#fff', fontWeight: 'bold' },
-
+    flexDirection: 'row',
+    flexWrap: 'wrap',      // wrap to next line if needed
+    marginBottom: 15,
+  },
+  categoryBtn: {
+    paddingHorizontal: 15,
+    paddingVertical: 6,
+    backgroundColor: '#eee',
+    borderRadius: 25,
+    marginRight: 8,
+    marginBottom: 8,       // spacing for wrapped lines
+  },
+  categoryBtnActive: { backgroundColor: '#007AFF' },
+  categoryText: { color: '#333', fontSize: 16 },
+  categoryTextActive: { color: '#fff', fontWeight: 'bold' },
 
   headerRow: {
     flexDirection: 'row',
@@ -235,15 +230,15 @@ categoryTextActive: { color: '#fff', fontWeight: 'bold' },
     borderColor: '#e0e0e0',
     alignItems: 'center',
   },
-  name: { flex: 1.5 },
+  name: { flex: 1.5 ,fontSize: 16},
   qtyRow: {
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
   },
-  qtyBtn: { fontSize: 32, paddingHorizontal: 12, fontWeight: 'bold' },
-  qty: { fontSize: 18, minWidth: 24, textAlign: 'center' },
+  qtyBtn: { fontSize: 50, paddingHorizontal: 12, fontWeight: 'bold' },
+  qty: { fontSize: 30, minWidth: 24, textAlign: 'center' },
   price: { flex: 1, textAlign: 'right' },
 
   preview: {

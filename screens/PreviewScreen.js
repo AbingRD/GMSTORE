@@ -50,105 +50,87 @@ export default function PreviewScreen({ route, navigation }) {
     }
   };
 
-  // Print receipt, accepts number of copies
+  // Optimized print for any number of items
   const printReceipt = async (copies = 1) => {
-  try {
-    setPrinting(true);
+    try {
+      setPrinting(true);
+      await requestPermissions();
+      await ReactNativePosPrinter.init();
+      await ReactNativePosPrinter.connectPrinter(printerMac, { type: 'BLUETOOTH' });
 
-    await requestPermissions();
-    await ReactNativePosPrinter.init();
-    await ReactNativePosPrinter.connectPrinter(printerMac, { type: 'BLUETOOTH' });
+      const txnNumber = String(transactionNumber).padStart(5, '0');
+      const now = new Date();
+      const dateStr = now.toLocaleDateString();
+      const timeStr = now.toLocaleTimeString();
+      const cashAmount = parseFloat(cash) || total;
+      const change = cashAmount - total;
 
-    const txnNumber = String(transactionNumber).padStart(5, '0');
-    const now = new Date();
-    const dateStr = now.toLocaleDateString();
-    const timeStr = now.toLocaleTimeString();
-    const cashAmount = parseFloat(cash) || total;
-    const change = cashAmount - total;
+      for (let c = 0; c < copies; c++) {
+        const isCopy = c > 0;
 
-    for (let c = 0; c < copies; c++) {
-      const isCopy = c > 0; // first receipt is original, others are copies
+        // HEADER
+        if (!isCopy) {
+          await ReactNativePosPrinter.printText(`Abing Store\n`, { align: 'CENTER', size: 14, bold: true });
+          await ReactNativePosPrinter.printText(`09167640132\n`, { align: 'CENTER', size: 12 });
+          await ReactNativePosPrinter.printText(`TNo:${txnNumber}      ${dateStr}      ${timeStr}\n`, { align: 'LEFT', size: 9 });
+        } else {
+          await ReactNativePosPrinter.printText(`COPY\n`, { align: 'CENTER', size: 10, bold: true });
+        }
 
-      // --- HEADER ---
-      if (!isCopy) {
-        await ReactNativePosPrinter.printText(`DanJ Store\n`, { align: 'CENTER', size: 14, bold: true });
-        await ReactNativePosPrinter.printText(`09167640132\n`, { align: 'CENTER', size: 12 });
-        await ReactNativePosPrinter.printText(`TNo:${txnNumber}      ${dateStr}      ${timeStr}\n`, { align: 'LEFT', size: 9 });
+        // Customer
+        await ReactNativePosPrinter.printText(`Customer: ${customerName}\n`, { align: 'LEFT', size: 9 });
+        await ReactNativePosPrinter.printText(`--------------------------------`);
+
+        // ITEMS (batching)
+        const batchSize = 5; // small batch to support large receipts
+        for (let i = 0; i < items.length; i += batchSize) {
+          const batch = items.slice(i, i + batchSize);
+          let textBatch = '';
+          batch.forEach(item => {
+            const lineTotal = (item.wholesale_price || 0) * item.quantity;
+            const name = (item.name || 'No Name').substring(0, 23).padEnd(20);
+            textBatch += `${name} ₱${lineTotal.toFixed(2)}\n ₱${item.wholesale_price} x ${item.quantity}\n\n`;
+          });
+          await ReactNativePosPrinter.printText(textBatch, { size: 9 });
+          await sleep(200); // delay per batch
+        }
+
+        await ReactNativePosPrinter.printText(`--------------------------------`);
+        await ReactNativePosPrinter.printText(`Grand Total: ₱${total.toFixed(2)}\n`, { align: 'RIGHT', size: 10 });
+        await ReactNativePosPrinter.printText(`Cash: ₱${cashAmount.toFixed(2)}\n`, { align: 'RIGHT', size: 10 });
+        if (change > 0) {
+          await ReactNativePosPrinter.printText(`Change: ₱${change.toFixed(2)}\n`, { align: 'RIGHT', size: 10 });
+        }
+        await ReactNativePosPrinter.newLine(3);
+
+        if (copies > 1) await sleep(500); // delay between copies
       }
 
-      // --- Customer ---
-      await ReactNativePosPrinter.printText(`Customer: ${customerName}\n`, { align: 'LEFT', size: 9 });
-      await ReactNativePosPrinter.printText(`--------------------------------`);
+      await ReactNativePosPrinter.disconnectPrinter();
 
-      // --- ITEMS ---
-      for (const item of items) {
-        const lineTotal = item.wholesale_price * item.quantity;
-        await ReactNativePosPrinter.printText(
-          `${item.name.substring(0, 23).padEnd(20)} ₱${lineTotal}\n\n`,
-          { size: 9, bold: false }
-        );
-        await ReactNativePosPrinter.printText(
-          ` ₱${item.wholesale_price} x ${item.quantity}\n\n\n`,
-          { align: 'LEFT', size: 9, bold: false }
-        );
-        
-        ReactNativePosPrinter.newLine(1);
-      }
+      // Save transaction
+      addTransaction({
+        customerName,
+        date: now,
+        items,
+        total,
+        cash: cashAmount,
+        change: change > 0 ? change : 0,
+      });
 
-      await ReactNativePosPrinter.printText(`--------------------------------`);
-      await ReactNativePosPrinter.printText(`Grand Total: ₱${total.toFixed(2)}\n`, { align: 'RIGHT', size: 10 });
-      await ReactNativePosPrinter.printText(`Cash: ₱${cashAmount.toFixed(2)}\n`, { align: 'RIGHT', size: 10 });
-      if (change > 0) {
-        await ReactNativePosPrinter.printText(`Change: ₱${change.toFixed(2)}\n`, { align: 'RIGHT', size: 10 });
-        await ReactNativePosPrinter.newLine(2);
-      }
+      Alert.alert('Success', 'Receipt printed successfully!', [
+        { text: 'OK', onPress: () => navigation.popToTop() },
+      ]);
+    } catch (error) {
+      console.error(error);
+      Alert.alert('Print Error', error.message);
+    } finally {
+      setPrinting(false);
+    }
+  };
 
-      await ReactNativePosPrinter.newLine(3);
-
-       let delay = 0;
-  if (items.length < 10) {
-    delay = 1800; 
-  } else if (items.length < 15 || items.length > 15) {
-    delay = 3500; 
-  } else if(items.length < 25 || items.length > 25) {
-    delay = 5600; 
-  } else if(items.length > 35){
-    delay = 7700; 
-  }
-  await sleep(delay); // pause so printer can catch up
-
-  // small delay between copies
-  if (copies > 1) await sleep(500);
-}
-
-    await ReactNativePosPrinter.disconnectPrinter();
-
-    // Save transaction
-    addTransaction({
-      customerName,
-      date: now,
-      items,
-      total,
-      cash: cashAmount,
-      change: change > 0 ? change : 0,
-    });
-
-    Alert.alert('Success', 'Receipt printed successfully!', [
-      { text: 'OK', onPress: () => navigation.popToTop() },
-    ]);
-  } catch (error) {
-    console.error(error);
-    Alert.alert('Print Error', error.message);
-  } finally {
-    setPrinting(false);
-  }
-};
-
-
-  // Handle Confirm Transaction alert with 3 options
   const handleConfirmTransaction = () => {
     const cashAmount = parseFloat(cash) || total;
-
     if (cashAmount < total) {
       Alert.alert(
         'Insufficient Cash',
@@ -157,7 +139,6 @@ export default function PreviewScreen({ route, navigation }) {
       );
       return;
     }
-
     Alert.alert(
       'Print Receipt',
       'Select an option:',
@@ -171,7 +152,7 @@ export default function PreviewScreen({ route, navigation }) {
   };
 
   const renderItem = ({ item }) => {
-    const lineTotal = item.wholesale_price * item.quantity;
+    const lineTotal = (item.wholesale_price || 0) * item.quantity;
     return (
       <View style={styles.row}>
         <Text style={styles.name}>{item.name}</Text>
@@ -258,6 +239,7 @@ export default function PreviewScreen({ route, navigation }) {
               </View>
             </View>
           </Modal>
+
         </View>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
@@ -273,10 +255,10 @@ const styles = StyleSheet.create({
   headerName: { flex: 1.5, fontWeight: 'bold' },
   headerCalc: { flex: 1, textAlign: 'center', fontWeight: 'bold' },
   headerTotal: { flex: 1, textAlign: 'right', fontWeight: 'bold' },
-  row: { flexDirection: 'row', paddingVertical: 10, borderBottomWidth: 1, borderColor: '#eee' },
-  name: { flex: 1.5 },
-  calc: { flex: 1, textAlign: 'center' },
-  totalLine: { flex: 1, textAlign: 'right', fontWeight: 'bold' },
+  row: { flexDirection: 'row', paddingVertical: 12, borderBottomWidth: 1, borderColor: '#eee' },
+  name: { flex: 1.5, fontSize: 18 },
+  calc: { flex: 1, textAlign: 'center', fontSize: 18 },
+  totalLine: { flex: 1, textAlign: 'right', fontWeight: 'bold', fontSize: 17 },
   footer: { position: 'absolute', bottom: 0, left: 0, right: 0, padding: 15, borderTopWidth: 1, backgroundColor: '#fff' },
   grandTotal: { fontSize: 18, fontWeight: 'bold' },
   cashInput: { borderWidth: 1, borderColor: '#ccc', padding: 8, width: 100, borderRadius: 5, textAlign: 'center' },
