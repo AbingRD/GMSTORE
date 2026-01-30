@@ -280,7 +280,11 @@
   { "id": 100, "name": "NatureSpring 500ml", "retail_price": "15", "wholesale_price": "230", "category": "Beers & Drinks" },
   { "id": 101, "name": "NatureSpring 1Liter", "retail_price": "25", "wholesale_price": "220", "category": "Beers & Drinks" },
    { "id": 102, "name": "Kulafu Big WS", "retail_price": "100", "wholesale_price": "89", "category": "Beers & Drinks" },
-  { "id": 103, "name": "ABC", "retail_price": "100", "wholesale_price": "25", "category": "Beers & Drinks" }
+  { "id": 103, "name": "ABC", "retail_price": "100", "wholesale_price": "25", "category": "Beers & Drinks" },
+   { "id": 103, "name": "ABCD", "retail_price": "100", "wholesale_price": "25", "category": "Beers & Drinks" },
+   { "id": 104, "name": "Deposit 90", "retail_price": "90", "wholesale_price": "90", "category": "Beers & Drinks" }
+
+
 
 
 ]
