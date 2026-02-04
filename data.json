@@ -235,10 +235,10 @@
   { "id": 59, "name": "Sting Bottle 240ml", "retail_price": "20", "wholesale_price": "305", "category": "Beers & Drinks" },
   { "id": 60, "name": "Pepsi Swakto", "retail_price": "15", "wholesale_price": "137", "category": "Beers & Drinks" },
 
-  { "id": 61, "name": "Mighty Red", "retail_price": "8", "wholesale_price": "145", "category": "Cigarettes" },
-  { "id": 62, "name": "Mighty White", "retail_price": "8", "wholesale_price": "145", "category": "Cigarettes" },
-  { "id": 63, "name": "Winston Red", "retail_price": "9", "wholesale_price": "163", "category": "Cigarettes" },
-  { "id": 64, "name": "Winston Ream", "retail_price": "145", "wholesale_price": "1450", "category": "Cigarettes" },
+  { "id": 61, "name": "Mighty Red", "retail_price": "9", "wholesale_price": "164", "category": "Cigarettes" },
+  { "id": 62, "name": "Mighty White", "retail_price": "9", "wholesale_price": "164", "category": "Cigarettes" },
+  { "id": 63, "name": "Winston Red", "retail_price": "10", "wholesale_price": "182", "category": "Cigarettes" },
+  { "id": 64, "name": "Winston Ream", "retail_price": "182", "wholesale_price": "1820", "category": "Cigarettes" },
   { "id": 65, "name": "Winston Blast", "retail_price": "9", "wholesale_price": "163", "category": "Cigarettes" },
   { "id": 66, "name": "Marlboro Blast", "retail_price": "9", "wholesale_price": "155", "category": "Cigarettes" },
   { "id": 67, "name": "Marlboro Red", "retail_price": "9", "wholesale_price": "155", "category": "Cigarettes" },
@@ -282,7 +282,7 @@
    { "id": 102, "name": "Kulafu Big WS", "retail_price": "100", "wholesale_price": "89", "category": "Beers & Drinks" },
   { "id": 103, "name": "ABC", "retail_price": "100", "wholesale_price": "25", "category": "Beers & Drinks" },
    { "id": 104, "name": "ABCD", "retail_price": "100", "wholesale_price": "25", "category": "Beers & Drinks" },
-   { "id": 105, "name": "Deposit 90", "retail_price": "90", "wholesale_price": "90", "category": "Beers & Drinks" }
+   { "id": 105, "name": "Coke 8oz 1/2", "retail_price": "100", "wholesale_price": "100", "category": "Beers & Drinks" }
 
 
 
