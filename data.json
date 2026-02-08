@@ -242,7 +242,7 @@
   { "id": 65, "name": "Winston Blast", "retail_price": "9", "wholesale_price": "163", "category": "Cigarettes" },
   { "id": 66, "name": "Marlboro Blast", "retail_price": "9", "wholesale_price": "155", "category": "Cigarettes" },
   { "id": 67, "name": "Marlboro Red", "retail_price": "9", "wholesale_price": "155", "category": "Cigarettes" },
-  { "id": 68, "name": "Camel Cigar", "retail_price": "7", "wholesale_price": "135", "category": "Cigarettes" },
+  { "id": 68, "name": "Camel Cigar", "retail_price": "8", "wholesale_price": "145", "category": "Cigarettes" },
   { "id": 69, "name": "ChesterRed XL", "retail_price": "7", "wholesale_price": "128", "category": "Cigarettes" },
   { "id": 70, "name": "ChesterRed Orig", "retail_price": "7", "wholesale_price": "128", "category": "Cigarettes" },
 
@@ -280,8 +280,8 @@
   { "id": 100, "name": "NatureSpring 500ml", "retail_price": "15", "wholesale_price": "230", "category": "Beers & Drinks" },
   { "id": 101, "name": "NatureSpring 1Liter", "retail_price": "25", "wholesale_price": "220", "category": "Beers & Drinks" },
    { "id": 102, "name": "Kulafu Big WS", "retail_price": "100", "wholesale_price": "89", "category": "Beers & Drinks" },
-  { "id": 103, "name": "ABC", "retail_price": "100", "wholesale_price": "25", "category": "Beers & Drinks" },
-   { "id": 104, "name": "ABCD", "retail_price": "100", "wholesale_price": "25", "category": "Beers & Drinks" },
+  { "id": 103, "name": "Sprite 8oz 1/2", "retail_price": "100", "wholesale_price": "100", "category": "Beers & Drinks" },
+   { "id": 104, "name": "Royal 80z 1/2", "retail_price": "95", "wholesale_price": "95", "category": "Beers & Drinks" },
    { "id": 105, "name": "Coke 8oz 1/2", "retail_price": "100", "wholesale_price": "100", "category": "Beers & Drinks" }
 
 
