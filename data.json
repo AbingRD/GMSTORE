@@ -231,7 +231,7 @@
   { "id": 55, "name": "Magnolia Grapes", "retail_price": "13", "wholesale_price": "235", "category": "Beers & Drinks" },
   { "id": 56, "name": "Mountain 12oz", "retail_price": "20", "wholesale_price": "285", "category": "Beers & Drinks" },
   { "id": 57, "name": "Mountain 12oz 1/2", "retail_price": "20", "wholesale_price": "142.5", "category": "Beers & Drinks" },
-  { "id": 58, "name": "Sting Plastic", "retail_price": "22", "wholesale_price": "207", "category": "Beers & Drinks" },
+  { "id": 58, "name": "Sting Plastic", "retail_price": "22", "wholesale_price": "210", "category": "Beers & Drinks" },
   { "id": 59, "name": "Sting Bottle 240ml", "retail_price": "20", "wholesale_price": "305", "category": "Beers & Drinks" },
   { "id": 60, "name": "Pepsi Swakto", "retail_price": "15", "wholesale_price": "137", "category": "Beers & Drinks" },
 
