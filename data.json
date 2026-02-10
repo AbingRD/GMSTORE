@@ -309,7 +309,8 @@
    { "id": 129, "name": "Judge", "retail_price": "3.5", "wholesale_price": "43", "category": "Uncategorized" },
    { "id": 130, "name": "Rebisco Crackers", "retail_price": "8", "wholesale_price": "60", "category": "Uncategorized" },
    { "id": 131, "name": "Strawberry Sandwich", "retail_price": "8", "wholesale_price": "60", "category": "Uncategorized" },
-   { "id": 132, "name": "Tops Sarap", "retail_price": "10", "wholesale_price": "80", "category": "Uncategorized" }
+   { "id": 132, "name": "Tops Sarap", "retail_price": "10", "wholesale_price": "80", "category": "Uncategorized" },
+  { "id": 133, "name": "Coke 8oz 1/2", "retail_price": "13", "wholesale_price": "100", "category": "Beers & Drinks" },
   
 
 
