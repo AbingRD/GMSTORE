@@ -310,7 +310,21 @@
    { "id": 130, "name": "Rebisco Crackers", "retail_price": "8", "wholesale_price": "60", "category": "Uncategorized" },
    { "id": 131, "name": "Strawberry Sandwich", "retail_price": "8", "wholesale_price": "60", "category": "Uncategorized" },
    { "id": 132, "name": "Tops Sarap", "retail_price": "10", "wholesale_price": "80", "category": "Uncategorized" },
-  { "id": 133, "name": "Coke 8oz 1/2", "retail_price": "13", "wholesale_price": "100", "category": "Beers & Drinks" }
+  { "id": 133, "name": "Coke 8oz 1/2", "retail_price": "13", "wholesale_price": "100", "category": "Beers & Drinks" },
+  { "id": 134, "name": "Lite Drink", "retail_price": "20", "wholesale_price": "180", "category": "Beers & Drinks" },
+  { "id": 135, "name": "Root Drinks Swakto", "retail_price": "15", "wholesale_price": "137", "category": "Beers & Drinks" },
+  { "id": 136, "name": "Predator", "retail_price": "15", "wholesale_price": "150", "category": "Beers & Drinks" },
+  { "id": 137, "name": "Wilkins 330ml", "retail_price": "2", "wholesale_price": "100", "category": "Beers & Drinks" },
+  { "id": 138, "name": "Blanca Twin 10s", "retail_price": "15", "wholesale_price": "130", "category": "Uncategorized" },
+  { "id": 139, "name": "Black Twin 10s", "retail_price": "15", "wholesale_price": "130", "category": "Uncategorized" },
+  { "id": 140, "name": "Brown Twin 10s", "retail_price": "15", "wholesale_price": "130", "category": "Uncategorized" },
+  { "id": 141, "name": "Creamy White Twin", "retail_price": "15", "wholesale_price": "128", "category": "Uncategorized" },
+  { "id": 142, "name": "Original Twin", "retail_price": "15", "wholesale_price": "128", "category": "Uncategorized" },
+  { "id": 143, "name": "Swak 8s", "retail_price": "13", "wholesale_price": "86", "category": "Uncategorized" },
+  { "id": 144, "name": "Coffee Stick Pack", "retail_price": "4", "wholesale_price": "135", "category": "Uncategorized" },
+  { "id": 145, "name": "Coffee Stick 12s", "retail_price": "4", "wholesale_price": "37", "category": "Uncategorized" }
+
+
   
 
 
