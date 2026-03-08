@@ -322,7 +322,8 @@
   { "id": 142, "name": "Original Twin", "retail_price": "15", "wholesale_price": "128", "category": "Uncategorized" },
   { "id": 143, "name": "Swak 8s", "retail_price": "13", "wholesale_price": "86", "category": "Uncategorized" },
   { "id": 144, "name": "Coffee Stick Pack", "retail_price": "4", "wholesale_price": "135", "category": "Uncategorized" },
-  { "id": 145, "name": "Coffee Stick 12s", "retail_price": "4", "wholesale_price": "37", "category": "Uncategorized" }
+  { "id": 145, "name": "Coffee Stick 12s", "retail_price": "4", "wholesale_price": "37", "category": "Uncategorized" },
+  { "id": 146, "name": "Sprite Mismo", "retail_price": "20", "wholesale_price": "205", "category": "Beers & Drinks" }
 
 
   
