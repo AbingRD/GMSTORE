@@ -239,14 +239,14 @@
   { "id": 62, "name": "Mighty White", "retail_price": "9", "wholesale_price": "164", "category": "Cigarettes" },
   { "id": 63, "name": "Winston Red", "retail_price": "10", "wholesale_price": "182", "category": "Cigarettes" },
   { "id": 64, "name": "Winston Ream", "retail_price": "182", "wholesale_price": "1820", "category": "Cigarettes" },
-  { "id": 65, "name": "Winston Blast", "retail_price": "9", "wholesale_price": "163", "category": "Cigarettes" },
+  { "id": 65, "name": "Winston Blast", "retail_price": "10", "wholesale_price": "182", "category": "Cigarettes" },
   { "id": 66, "name": "Marlboro Blast", "retail_price": "10", "wholesale_price": "176", "category": "Cigarettes" },
   { "id": 67, "name": "Marlboro Red", "retail_price": "10", "wholesale_price": "176", "category": "Cigarettes" },
   { "id": 68, "name": "Camel Cigar", "retail_price": "8", "wholesale_price": "145", "category": "Cigarettes" },
-  { "id": 69, "name": "ChesterRed XL", "retail_price": "7", "wholesale_price": "128", "category": "Cigarettes" },
-  { "id": 70, "name": "ChesterRed Orig", "retail_price": "7", "wholesale_price": "128", "category": "Cigarettes" },
+  { "id": 69, "name": "ChesterRed XL", "retail_price": "8", "wholesale_price": "147", "category": "Cigarettes" },
+  { "id": 70, "name": "ChesterRed Orig", "retail_price": "8", "wholesale_price": "147", "category": "Cigarettes" },
 
-  { "id": 71, "name": "Chester White", "retail_price": "8", "wholesale_price": "128", "category": "Cigarettes" },
+  { "id": 71, "name": "Chester White", "retail_price": "8", "wholesale_price": "147", "category": "Cigarettes" },
   { "id": 72, "name": "Magic Sarap", "retail_price": "6", "wholesale_price": "75", "category": "Uncategorized" },
   { "id": 73, "name": "Vitsen", "retail_price": "5", "wholesale_price": "62", "category": "Uncategorized" },
   { "id": 74, "name": "Ginisa", "retail_price": "5", "wholesale_price": "52", "category": "Uncategorized" },
@@ -323,7 +323,8 @@
   { "id": 143, "name": "Swak 8s", "retail_price": "13", "wholesale_price": "86", "category": "Uncategorized" },
   { "id": 144, "name": "Coffee Stick Pack", "retail_price": "4", "wholesale_price": "135", "category": "Uncategorized" },
   { "id": 145, "name": "Coffee Stick 12s", "retail_price": "4", "wholesale_price": "37", "category": "Uncategorized" },
-  { "id": 146, "name": "Sprite Mismo", "retail_price": "20", "wholesale_price": "205", "category": "Beers & Drinks" }
+  { "id": 146, "name": "Sprite Mismo", "retail_price": "20", "wholesale_price": "205", "category": "Beers & Drinks" },
+  { "id": 146, "name": "Cobra Bottle 1/2", "retail_price": "20", "wholesale_price": "158", "category": "Beers & Drinks" }
 
 
   
