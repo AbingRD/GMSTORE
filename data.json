@@ -324,7 +324,9 @@
   { "id": 144, "name": "Coffee Stick Pack", "retail_price": "4", "wholesale_price": "135", "category": "Uncategorized" },
   { "id": 145, "name": "Coffee Stick 12s", "retail_price": "4", "wholesale_price": "37", "category": "Uncategorized" },
   { "id": 146, "name": "Sprite Mismo", "retail_price": "20", "wholesale_price": "205", "category": "Beers & Drinks" },
-  { "id": 147, "name": "Cobra Bottle 1/2", "retail_price": "20", "wholesale_price": "158", "category": "Beers & Drinks" }
+  { "id": 147, "name": "Cobra Bottle 1/2", "retail_price": "20", "wholesale_price": "158", "category": "Beers & Drinks" },
+  { "id": 148, "name": "Lemon 1/2", "retail_price": "12", "wholesale_price": "85", "category": "Beers & Drinks" },
+  { "id": 149, "name": "Oishi Assorted", "retail_price": "9", "wholesale_price": "7", "category": "Uncategorized" }
 
 
   
