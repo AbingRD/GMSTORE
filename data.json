@@ -3,7 +3,7 @@
     "id": 1,
     "name": "Coke 8oz",
     "retail_price": 13,
-    "wholesale_price": 200,
+    "wholesale_price": 215,
     "category": "Beers & Drinks"
     
   },
@@ -11,14 +11,14 @@
     "id": 2,
     "name": "Sprite 8oz",
     "retail_price": 13,
-    "wholesale_price": 200,
+    "wholesale_price": 215,
     "category": "Beers & Drinks"
   },
   {
     "id": 3,
     "name": "Royal 8oz",
     "retail_price": 13,
-    "wholesale_price": 190,
+    "wholesale_price": 215,
     "category": "Beers & Drinks"
   },
   {
@@ -63,28 +63,28 @@
     "id": 9,
     "name": "Coke Litro",
     "retail_price": 45,
-    "wholesale_price": 400,
+    "wholesale_price": 415,
     "category": "Beers & Drinks"
   },
 {
     "id": 10,
     "name": "Coke Litro 1/2",
     "retail_price": 45,
-    "wholesale_price": 200,
+    "wholesale_price": 208,
     "category": "Beers & Drinks"
   },
   {
     "id": 11,
     "name": "Sprite Litro",
     "retail_price": 45,
-    "wholesale_price": 400,
+    "wholesale_price": 415,
     "category": "Beers & Drinks"
   },
   {
     "id": 12,
     "name": "Sprite Litro 1/2",
     "retail_price": 45,
-    "wholesale_price": 200,
+    "wholesale_price": 208,
     "category": "Beers & Drinks"
     
   },
@@ -92,14 +92,14 @@
     "id": 13,
     "name": "Royal Litro",
     "retail_price": 45,
-    "wholesale_price": 400,
+    "wholesale_price": 415,
     "category": "Beers & Drinks"
   },
   {
     "id": 14,
     "name": "Royal Litro 1/2",
     "retail_price": 45,
-    "wholesale_price": 200,
+    "wholesale_price": 208,
     "category": "Beers & Drinks"
   },
   {
@@ -154,50 +154,50 @@
   {
     "id": 22,
     "name": "Lemon Small",
-    "retail_price": 12,
-    "wholesale_price": 175,
+    "retail_price": 13,
+    "wholesale_price": 185,
     "category": "Beers & Drinks"
   },
   {
     "id": 23,
     "name": "Lemon Small Disc",
-    "retail_price": 12,
-    "wholesale_price": 170,
+    "retail_price": 13,
+    "wholesale_price": 181,
     "category": "Beers & Drinks"
   },
   {
     "id": 24,
     "name": "Rc Small",
     "retail_price": 12,
-    "wholesale_price": 175,
+    "wholesale_price": 185,
     "category": "Beers & Drinks"
   },
   {
     "id": 25,
     "name": "Lemon Big",
     "retail_price": 35,
-    "wholesale_price": 257,
+    "wholesale_price": 265,
     "category": "Beers & Drinks"
   },
   {
     "id": 26,
     "name": "Lemon Big 1/2",
     "retail_price": 35,
-    "wholesale_price": 129,
+    "wholesale_price": 133,
     "category": "Beers & Drinks"
   },
   {
     "id": 27,
     "name": "Rc Big",
     "retail_price": 35,
-    "wholesale_price": 257,
+    "wholesale_price": 265,
     "category": "Beers & Drinks"
   },
   {
     "id": 28,
     "name": "RC Big 1/2",
     "retail_price": 35,
-    "wholesale_price": 129,
+    "wholesale_price": 133,
     "category": "Beers & Drinks"
   },
   { "id": 29, "name": "Cobra YellowP", "retail_price": "20", "wholesale_price": "195", "category": "Beers & Drinks" },
@@ -229,16 +229,16 @@
   { "id": 53, "name": "Magnolia Apple", "retail_price": "13", "wholesale_price": "235", "category": "Beers & Drinks" },
   { "id": 54, "name": "Magnolia Lemon", "retail_price": "13", "wholesale_price": "235", "category": "Beers & Drinks" },
   { "id": 55, "name": "Magnolia Grapes", "retail_price": "13", "wholesale_price": "235", "category": "Beers & Drinks" },
-  { "id": 56, "name": "Mountain 12oz", "retail_price": "20", "wholesale_price": "285", "category": "Beers & Drinks" },
-  { "id": 57, "name": "Mountain 12oz 1/2", "retail_price": "20", "wholesale_price": "143", "category": "Beers & Drinks" },
-  { "id": 58, "name": "Sting Plastic", "retail_price": "22", "wholesale_price": "210", "category": "Beers & Drinks" },
+  { "id": 56, "name": "Mountain 12oz", "retail_price": "20", "wholesale_price": "305", "category": "Beers & Drinks" },
+  { "id": 57, "name": "Mountain 12oz 1/2", "retail_price": "20", "wholesale_price": "153", "category": "Beers & Drinks" },
+  { "id": 58, "name": "Sting Plastic", "retail_price": "22", "wholesale_price": "215", "category": "Beers & Drinks" },
   { "id": 59, "name": "Sting Bottle 240ml", "retail_price": "20", "wholesale_price": "315", "category": "Beers & Drinks" },
   { "id": 60, "name": "Pepsi Swakto", "retail_price": "15", "wholesale_price": "137", "category": "Beers & Drinks" },
 
   { "id": 61, "name": "Mighty Red", "retail_price": "9", "wholesale_price": "164", "category": "Cigarettes" },
   { "id": 62, "name": "Mighty White", "retail_price": "9", "wholesale_price": "164", "category": "Cigarettes" },
   { "id": 63, "name": "Winston Red", "retail_price": "10", "wholesale_price": "182", "category": "Cigarettes" },
-  { "id": 64, "name": "Winston Ream", "retail_price": "182", "wholesale_price": "1820", "category": "Cigarettes" },
+  
   { "id": 65, "name": "Winston Blast", "retail_price": "10", "wholesale_price": "182", "category": "Cigarettes" },
   { "id": 66, "name": "Marlboro Blast", "retail_price": "10", "wholesale_price": "176", "category": "Cigarettes" },
   { "id": 67, "name": "Marlboro Red", "retail_price": "10", "wholesale_price": "176", "category": "Cigarettes" },
@@ -253,9 +253,9 @@
   { "id": 75, "name": "Oyster 1/2", "retail_price": "8", "wholesale_price": "38", "category": "Uncategorized" },
   { "id": 76, "name": "Oyster Doz", "retail_price": "8", "wholesale_price": "76", "category": "Uncategorized" },
   { "id": 77, "name": "Original Twin", "retail_price": "15", "wholesale_price": "125", "category": "Uncategorized" },
-  { "id": 78, "name": "Surf pink 6+1", "retail_price": "8", "wholesale_price": "45", "category": "Uncategorized" },
+  { "id": 78, "name": "Surf pink 6+1", "retail_price": "8", "wholesale_price": "47", "category": "Uncategorized" },
   { "id": 79, "name": "Wings Orange 6+1", "retail_price": "7", "wholesale_price": "40", "category": "Uncategorized" },
-  { "id": 80, "name": "Surf red 6+1", "retail_price": "8", "wholesale_price": "45", "category": "Uncategorized" },
+  { "id": 80, "name": "Surf red 6+1", "retail_price": "8", "wholesale_price": "47", "category": "Uncategorized" },
 
   { "id": 81, "name": "ArielGreen Twin", "retail_price": "16", "wholesale_price": "90", "category": "Uncategorized" },
   { "id": 82, "name": "ArielRed Twin", "retail_price": "16", "wholesale_price": "90", "category": "Uncategorized" },
@@ -280,8 +280,8 @@
   { "id": 100, "name": "NatureSpring 500ml", "retail_price": "15", "wholesale_price": "230", "category": "Beers & Drinks" },
   { "id": 101, "name": "NatureSpring 1Liter", "retail_price": "25", "wholesale_price": "220", "category": "Beers & Drinks" },
    { "id": 102, "name": "Kulafu Big WS", "retail_price": "100", "wholesale_price": "89", "category": "Beers & Drinks" },
-  { "id": 103, "name": "Sprite 8oz 1/2", "retail_price": "100", "wholesale_price": "100", "category": "Beers & Drinks" },
-   { "id": 104, "name": "Royal 80z 1/2", "retail_price": "95", "wholesale_price": "95", "category": "Beers & Drinks" },
+  { "id": 103, "name": "Sprite 8oz 1/2", "retail_price": "108", "wholesale_price": "108", "category": "Beers & Drinks" },
+   { "id": 104, "name": "Royal 8oz 1/2", "retail_price": "108", "wholesale_price": "105", "category": "Beers & Drinks" },
    { "id": 105, "name": "Mountain Plastic", "retail_price": "20", "wholesale_price": "205", "category": "Beers & Drinks" },
    { "id": 106, "name": "Zesto Apple", "retail_price": "12", "wholesale_price": "90", "category": "Beers & Drinks" },
    { "id": 107, "name": "Zesto Orange", "retail_price": "12", "wholesale_price": "90", "category": "Beers & Drinks" },
@@ -310,8 +310,8 @@
    { "id": 130, "name": "Rebisco Crackers", "retail_price": "8", "wholesale_price": "60", "category": "Uncategorized" },
    { "id": 131, "name": "Strawberry Sandwich", "retail_price": "8", "wholesale_price": "60", "category": "Uncategorized" },
    { "id": 132, "name": "Tops Sarap", "retail_price": "10", "wholesale_price": "80", "category": "Uncategorized" },
-  { "id": 133, "name": "Coke 8oz 1/2", "retail_price": "13", "wholesale_price": "100", "category": "Beers & Drinks" },
-  { "id": 134, "name": "Lite Drink", "retail_price": "20", "wholesale_price": "180", "category": "Beers & Drinks" },
+  { "id": 133, "name": "Coke 8oz 1/2", "retail_price": "13", "wholesale_price": "108", "category": "Beers & Drinks" },
+  { "id": 134, "name": "Lift Drink", "retail_price": "20", "wholesale_price": "180", "category": "Beers & Drinks" },
   { "id": 135, "name": "Root Drinks Swakto", "retail_price": "15", "wholesale_price": "137", "category": "Beers & Drinks" },
   { "id": 136, "name": "Predator", "retail_price": "15", "wholesale_price": "150", "category": "Beers & Drinks" },
   { "id": 137, "name": "Wilkins 330ml", "retail_price": "2", "wholesale_price": "100", "category": "Beers & Drinks" },
@@ -320,12 +320,12 @@
   { "id": 140, "name": "Brown Twin 10s", "retail_price": "15", "wholesale_price": "130", "category": "Uncategorized" },
   { "id": 141, "name": "Creamy White Twin", "retail_price": "15", "wholesale_price": "128", "category": "Uncategorized" },
   { "id": 142, "name": "Original Twin", "retail_price": "15", "wholesale_price": "128", "category": "Uncategorized" },
-  { "id": 143, "name": "Swak 8s", "retail_price": "13", "wholesale_price": "86", "category": "Uncategorized" },
+  { "id": 143, "name": "Swak 8s", "retail_price": "13", "wholesale_price": "84", "category": "Uncategorized" },
   { "id": 144, "name": "Coffee Stick Pack", "retail_price": "4", "wholesale_price": "135", "category": "Uncategorized" },
   { "id": 145, "name": "Coffee Stick 12s", "retail_price": "4", "wholesale_price": "37", "category": "Uncategorized" },
   { "id": 146, "name": "Sprite Mismo", "retail_price": "20", "wholesale_price": "205", "category": "Beers & Drinks" },
   { "id": 147, "name": "Cobra Bottle 1/2", "retail_price": "20", "wholesale_price": "158", "category": "Beers & Drinks" },
-  { "id": 148, "name": "Lemon 1/2", "retail_price": "12", "wholesale_price": "85", "category": "Beers & Drinks" },
+  { "id": 148, "name": "Lemon 1/2", "retail_price": "93", "wholesale_price": "93", "category": "Beers & Drinks" },
   { "id": 149, "name": "Oishi Assorted", "retail_price": "9", "wholesale_price": "7", "category": "Uncategorized" }
 
 
