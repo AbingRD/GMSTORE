@@ -326,12 +326,12 @@
   { "id": 146, "name": "Sprite Mismo", "retail_price": "20", "wholesale_price": "205", "category": "Beers & Drinks" },
   { "id": 147, "name": "Cobra Bottle 1/2", "retail_price": "20", "wholesale_price": "158", "category": "Beers & Drinks" },
   { "id": 148, "name": "Lemon 1/2", "retail_price": "93", "wholesale_price": "93", "category": "Beers & Drinks" },
-  { "id": 149, "name": "Oishi Assorted", "retail_price": "9", "wholesale_price": "7", "category": "Uncategorized" }
+  { "id": 149, "name": "Oishi Assorted", "retail_price": "9", "wholesale_price": "7", "category": "Uncategorized" },
+  { "id": 150, "name": "Swak Promo", "retail_price": "13", "wholesale_price": "12", "category": "Uncategorized" }
+ 
 
 
   
-
-
 
 
 ]
