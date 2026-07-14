@@ -3,7 +3,7 @@
     "id": 1,
     "name": "Coke 8oz",
     "retail_price": 13,
-    "wholesale_price": 215,
+    "wholesale_price": 225,
     "category": "Beers & Drinks"
     
   },
@@ -11,14 +11,14 @@
     "id": 2,
     "name": "Sprite 8oz",
     "retail_price": 13,
-    "wholesale_price": 215,
+    "wholesale_price": 225,
     "category": "Beers & Drinks"
   },
   {
     "id": 3,
     "name": "Royal 8oz",
     "retail_price": 13,
-    "wholesale_price": 215,
+    "wholesale_price": 225,
     "category": "Beers & Drinks"
   },
   {
@@ -63,28 +63,28 @@
     "id": 9,
     "name": "Coke Litro",
     "retail_price": 45,
-    "wholesale_price": 415,
+    "wholesale_price": 425,
     "category": "Beers & Drinks"
   },
 {
     "id": 10,
     "name": "Coke Litro 1/2",
     "retail_price": 45,
-    "wholesale_price": 208,
+    "wholesale_price": 213,
     "category": "Beers & Drinks"
   },
   {
     "id": 11,
     "name": "Sprite Litro",
     "retail_price": 45,
-    "wholesale_price": 415,
+    "wholesale_price": 425,
     "category": "Beers & Drinks"
   },
   {
     "id": 12,
     "name": "Sprite Litro 1/2",
     "retail_price": 45,
-    "wholesale_price": 208,
+    "wholesale_price": 213,
     "category": "Beers & Drinks"
     
   },
@@ -92,14 +92,14 @@
     "id": 13,
     "name": "Royal Litro",
     "retail_price": 45,
-    "wholesale_price": 415,
+    "wholesale_price": 425,
     "category": "Beers & Drinks"
   },
   {
     "id": 14,
     "name": "Royal Litro 1/2",
     "retail_price": 45,
-    "wholesale_price": 208,
+    "wholesale_price": 213,
     "category": "Beers & Drinks"
   },
   {
@@ -280,8 +280,8 @@
   { "id": 100, "name": "NatureSpring 500ml", "retail_price": "15", "wholesale_price": "230", "category": "Beers & Drinks" },
   { "id": 101, "name": "NatureSpring 1Liter", "retail_price": "25", "wholesale_price": "220", "category": "Beers & Drinks" },
    { "id": 102, "name": "Kulafu Big WS", "retail_price": "100", "wholesale_price": "89", "category": "Beers & Drinks" },
-  { "id": 103, "name": "Sprite 8oz 1/2", "retail_price": "108", "wholesale_price": "108", "category": "Beers & Drinks" },
-   { "id": 104, "name": "Royal 8oz 1/2", "retail_price": "108", "wholesale_price": "105", "category": "Beers & Drinks" },
+  { "id": 103, "name": "Sprite 8oz 1/2", "retail_price": "113", "wholesale_price": "113", "category": "Beers & Drinks" },
+   { "id": 104, "name": "Royal 8oz 1/2", "retail_price": "113", "wholesale_price": "113", "category": "Beers & Drinks" },
    { "id": 105, "name": "Mountain Plastic", "retail_price": "20", "wholesale_price": "205", "category": "Beers & Drinks" },
    { "id": 106, "name": "Zesto Apple", "retail_price": "12", "wholesale_price": "90", "category": "Beers & Drinks" },
    { "id": 107, "name": "Zesto Orange", "retail_price": "12", "wholesale_price": "90", "category": "Beers & Drinks" },
@@ -310,7 +310,7 @@
    { "id": 130, "name": "Rebisco Crackers", "retail_price": "8", "wholesale_price": "60", "category": "Uncategorized" },
    { "id": 131, "name": "Strawberry Sandwich", "retail_price": "8", "wholesale_price": "60", "category": "Uncategorized" },
    { "id": 132, "name": "Tops Sarap", "retail_price": "10", "wholesale_price": "80", "category": "Uncategorized" },
-  { "id": 133, "name": "Coke 8oz 1/2", "retail_price": "13", "wholesale_price": "108", "category": "Beers & Drinks" },
+  { "id": 133, "name": "Coke 8oz 1/2", "retail_price": "13", "wholesale_price": "113", "category": "Beers & Drinks" },
   { "id": 134, "name": "Lift Drink", "retail_price": "20", "wholesale_price": "180", "category": "Beers & Drinks" },
   { "id": 135, "name": "Root Drinks Swakto", "retail_price": "15", "wholesale_price": "137", "category": "Beers & Drinks" },
  
