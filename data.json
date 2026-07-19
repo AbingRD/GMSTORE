@@ -327,8 +327,12 @@
   { "id": 147, "name": "Cobra Bottle 1/2", "retail_price": "20", "wholesale_price": "158", "category": "Beers & Drinks" },
   { "id": 148, "name": "Lemon 1/2", "retail_price": "93", "wholesale_price": "93", "category": "Beers & Drinks" },
   { "id": 149, "name": "Oishi Assorted", "retail_price": "9", "wholesale_price": "7", "category": "Uncategorized" },
-  { "id": 150, "name": "Swak Promo", "retail_price": "13", "wholesale_price": "12", "category": "Uncategorized" }
- 
+  { "id": 150, "name": "Swak Promo", "retail_price": "13", "wholesale_price": "120", "category": "Uncategorized" },
+  { "id": 151, "name": "Hope", "retail_price": "8", "wholesale_price": "147", "category": "Cigarettes" },
+   { "id": 152, "name": "Canton Xtrahot", "retail_price": "14", "wholesale_price": "12.5", "category": "Uncategorized" },
+   { "id": 153, "name": "Canton Chilimansi", "retail_price": "14", "wholesale_price": "12.5", "category": "Uncategorized" }
+  
+
 
 
   
